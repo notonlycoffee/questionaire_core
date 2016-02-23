@@ -16,11 +16,11 @@ public class UserController {
 	
 	
 	@RequestMapping(value="getUser.xhtml")
-	public User getUser(ModelMap modelMap) {
+	public String getUser(ModelMap modelMap) {
 		User user = userService.getUserById(4);
 		System.out.println();
 		modelMap.addObject("user", user);
-		return user;
+		return "getuser";
 	}
 	
 }

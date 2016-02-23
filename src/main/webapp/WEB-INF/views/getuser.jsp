@@ -10,9 +10,8 @@
 
 	<h1>hello</h1>
 
-	<c:forEach items="${list }" var="kk">
-		${kk }
-	</c:forEach>
+	${user.username }<br />
+	
 
 </body>
 </html>
