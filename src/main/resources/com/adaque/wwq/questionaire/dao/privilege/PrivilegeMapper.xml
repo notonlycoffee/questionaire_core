@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaque.wwq.questionaire.dao.privilege.PrivilegeMapper">
+	
+	
+	<select id="getPrivilegeById" parameterType="string" resultType="privilege">
+		SELECT ID,NAME FROM T_PRIVILEGE WHERE ID=#{value}
+	</select>
+	
+	<select id="getAllPrivilege" resultType="privilege">
+		SELECT ID,NAME FROM T_PRIVILEGE
+	</select>
+	
+	
+	<update id="updatePrivilegeById" parameterType="string">
+		UPDATE T_PRIVILEGE T SET T.NAME=#{value}
+	</update>
+	
+	<delete id="deletePrivilegeById" parameterType="string">
+		DELETE FROM T_PRIVILEGE T WHERE T.ID=#{value}
+	</delete>
+	
+	<insert id="addPrivilege" parameterType="privilege">
+		INSERT INTO T_PRIVILEGE(ID,NAME) VALUES(#{privilege.id},#{privilege.name})
+	</insert>
+	
+</mapper>

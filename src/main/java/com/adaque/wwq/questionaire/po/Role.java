@@ -1,4 +1,4 @@
-package com.adaque.wwq.po;
+package com.adaque.wwq.questionaire.po;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class Role implements Serializable {
 	private int id;
 	private String name;
 	
-	private List<Function> functionList = new ArrayList();
+	private List<Privilege> privilegeList = new ArrayList();
 
 	public int getId() {
 		return id;
@@ -27,13 +27,14 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 
-	public List<Function> getFunctionList() {
-		return functionList;
+	public List<Privilege> getPrivilegeList() {
+		return privilegeList;
 	}
 
-	public void setFunctionList(List<Function> functionList) {
-		this.functionList = functionList;
+	public void setPrivilegeList(List<Privilege> privilegeList) {
+		this.privilegeList = privilegeList;
 	}
+
 	
 	
 }

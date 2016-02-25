@@ -1,14 +1,14 @@
-package com.adaque.wwq.po;
+package com.adaque.wwq.questionaire.po;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class College implements Serializable  {
-	private static final long serialVersionUID = -3310485139543785992L;
+public class SchoolClass implements Serializable  {
+	private static final long serialVersionUID = 6635333893183445897L;
+	
 	private String id;
-	private String num;
-	private String name;
+	private String code;
 	private List<Student> studentList = new ArrayList();
 	public String getId() {
 		return id;
@@ -16,17 +16,11 @@ public class College implements Serializable  {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getNum() {
-		return num;
+	public String getCode() {
+		return code;
 	}
-	public void setNum(String num) {
-		this.num = num;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public List<Student> getStudentList() {
 		return studentList;

@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<bean id="userService" class="com.adaque.wwq.service.impl.UserServiceImpl" ></bean>
+	<!-- <bean id="userService" class="com.adaque.wwq.service.impl.UserServiceImpl" ></bean> -->
 
 
 </beans>

@@ -1,4 +1,4 @@
-package com.adaque.wwq.po;
+package com.adaque.wwq.questionaire.po;
 
 import java.io.Serializable;
 

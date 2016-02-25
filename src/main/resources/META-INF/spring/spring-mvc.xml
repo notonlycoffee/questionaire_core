@@ -36,7 +36,7 @@
 	
 	
 	<!-- 加载handler，这里是加载controller类型的handler -->
-	<context:component-scan base-package="com.adaque.wwq.controller"></context:component-scan>
+	<context:component-scan base-package="com.adaque.wwq.webkit.web.action"></context:component-scan>
 	
 	
 	<mvc:annotation-driven/>

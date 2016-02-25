@@ -34,7 +34,7 @@
 	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
-		<property name="basePackage" value="com.adaque.wwq.mapper"></property>
+		<property name="basePackage" value="com.adaque.wwq.questionaire.dao"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 

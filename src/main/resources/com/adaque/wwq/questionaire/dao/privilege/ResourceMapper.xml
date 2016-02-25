@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaque.wwq.questionaire.dao.privilege.ResourceMapper">
+	
+	
+	
+	<select id="getResourceById" parameterType="string" resultType="resource">
+		SELECT ID,NAME,PRIVILEGE_ID,PATH FROM T_RESOURCE WHERE ID=#{value}
+	</select>
+	
+	<select id="getResourceByName" parameterType="string" resultType="resource">
+		SELECT ID,NAME,PRIVILEGE_ID,PATH FROM T_RESOURCE T WHERE T.NAME=#{value}
+	</select>
+	
+	<select id="getAllResource" resultType="resource">
+		SELECT ID,NAME,PRIVILEGE_ID,PATH FROM T_RESOURCE
+	</select>
+	
+	<update id="updateResourceById" parameterType="resource">
+		UPDATE T_RESOURCE T SET T.NAME=#{resource.name},SET T.PRIVILEGE_ID=#{resource.privilege_id},SET T.PATH=#{resource.path}  WHERE ID=#{resource.id}
+	</update>
+	
+	<delete id="deleteResourceById" parameterType="string">
+		DELETE FROM T_RESOURCE WHERE ID=#{value}
+	</delete>
+	
+	<insert id="addResource" parameterType="resource">
+		INSERT INTO T_RESOURCE(ID,NAME,PRIVILEGE_ID,PATH) VALUES(#{resource.id},#{resource.name},#{resource.privilege_id},#{resource.path})
+	</insert>
+	
+</mapper>

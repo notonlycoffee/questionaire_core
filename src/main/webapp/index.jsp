@@ -6,6 +6,7 @@
 <title>index</title>
 </head>
 <body>
-	<h1>你好啊</h1>
+	
+	<jsp:forward page="/gotologin.xhtml"></jsp:forward>
 </body>
 </html>
