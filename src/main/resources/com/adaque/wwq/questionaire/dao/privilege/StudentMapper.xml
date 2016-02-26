@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaque.wwq.questionaire.dao.privilege.StudentMapper">
+
+
+	<select id="getStudentById" parameterType="string" resultType="student">
+		SELECT
+		T.ID,
+		T.NUM,
+		T. NAME,
+		T. PASSWORD,
+		T.COLLEGE_ID,
+		T.MAJOR_ID,
+		T.CLASS_ID,
+		T.SEX,
+		T.BIRTHDAY,
+		T.QQ,
+		T.MAJOR,
+		T.MOBILE,
+		T.ADDRESS,
+		T.PEOPLE,
+		T.FAMILY_WORK,
+		T.HOBY,
+		T.ADVANTAGE,
+		T.SPECIALTY,
+		T.SHORTCOMING,
+		T.PHOTO,
+		T.RICH_POOR,
+		T.FAMILY_EDUCATION,
+		T.STUDY_TIME,
+		T.ABILITY_ID
+		FROM
+		T_STUDENT T
+		WHERE
+		T.ID =#{value}
+	</select>
+
+	<!-- 根据用户名和密码查询 -->
+	<select id="getStduentByNameAndPwd" parameterType="studentMapper" resultType="student">
+		SELECT
+		T.ID,
+		T.NUM,
+		T. NAME,
+		T. PASSWORD,
+		T.COLLEGE_ID,
+		T.MAJOR_ID,
+		T.CLASS_ID,
+		T.SEX,
+		T.BIRTHDAY,
+		T.QQ,
+		T.MAJOR,
+		T.MOBILE,
+		T.ADDRESS,
+		T.PEOPLE,
+		T.FAMILY_WORK,
+		T.HOBY,
+		T.ADVANTAGE,
+		T.SPECIALTY,
+		T.SHORTCOMING,
+		T.PHOTO,
+		T.RICH_POOR,
+		T.FAMILY_EDUCATION,
+		T.STUDY_TIME,
+		T.ABILITY_ID
+		FROM
+		T_STUDENT T
+		WHERE
+		T.NUM =#{studentMapper.username} AND T.PASSWORD=#{studentMapper.password}
+	</select>
+
+
+	<select id="getAllStudent" resultType="student">
+		SELECT
+		T.ID,
+		T.NUM,
+		T. NAME,
+		T. PASSWORD,
+		T.COLLEGE_ID,
+		T.MAJOR_ID,
+		T.CLASS_ID,
+		T.SEX,
+		T.BIRTHDAY,
+		T.QQ,
+		T.MAJOR,
+		T.MOBILE,
+		T.ADDRESS,
+		T.PEOPLE,
+		T.FAMILY_WORK,
+		T.HOBY,
+		T.ADVANTAGE,
+		T.SPECIALTY,
+		T.SHORTCOMING,
+		T.PHOTO,
+		T.RICH_POOR,
+		T.FAMILY_EDUCATION,
+		T.STUDY_TIME,
+		T.ABILITY_ID
+		FROM
+		T_STUDENT T
+	</select>
+
+
+	<delete id="deleteStudentById" parameterType="string">
+		DELETE FROM
+		T_STUDENT T WHERE T.ID=#{value}
+	</delete>
+
+
+	<update id="updateStudentById" parameterType="student">
+		UPDATE T_STUDENT
+		SET
+		T.NUM=#{student.num},
+		T. NAME=#{student.name},
+		T. PASSWORD=#{student.password},
+		T.COLLEGE_ID=#{student.college_id},
+		T.MAJOR_ID=#{student.major_id},
+		T.CLASS_ID=#{student.class_id},
+		T.SEX=#{student.sex},
+		T.BIRTHDAY=#{student.birthday},
+		T.QQ=#{student.qq},
+		T.MAJOR=#{student.major},
+		T.MOBILE=#{student.mobile},
+		T.ADDRESS=#{student.address},
+		T.PEOPLE=#{student.people},
+		T.FAMILY_WORK=#{student.family_work},
+		T.HOBY=#{student.hoby},
+		T.ADVANTAGE=#{student.advantage},
+		T.SPECIALTY=#{student.specialty},
+		T.SHORTCOMING=#{student.shortcoming},
+		T.PHOTO=#{student.photo},
+		T.RICH_POOR=#{student.rich_poor},
+		T.FAMILY_EDUCATION=#{student.family_education},
+		T.STUDY_TIME=#{student.study_time},
+		T.ABILITY_ID=#{student.ability_id}
+		WHERE
+		T.ID =#{student.id}
+	</update>
+
+	<insert id="addStudent" parameterType="student">
+		INSERT INTO T_STUDENT
+		(
+		T.ID,
+		T.NUM,
+		T. NAME,
+		T. PASSWORD,
+		T.COLLEGE_ID,
+		T.MAJOR_ID,
+		T.CLASS_ID,
+		T.SEX,
+		T.BIRTHDAY,
+		T.QQ,
+		T.MAJOR,
+		T.MOBILE,
+		T.ADDRESS,
+		T.PEOPLE,
+		T.FAMILY_WORK,
+		T.HOBY,
+		T.ADVANTAGE,
+		T.SPECIALTY,
+		T.SHORTCOMING,
+		T.PHOTO,
+		T.RICH_POOR,
+		T.FAMILY_EDUCATION,
+		T.STUDY_TIME,
+		T.ABILITY_ID
+		)
+		VALUES
+		(
+		#{student.id},
+		#{student.num},
+		#{student.name},
+		#{student.password},
+		#{student.college_id},
+		#{student.major_id},
+		#{student.class_id},
+		#{student.sex},
+		#{student.birthday},
+		#{student.qq},
+		#{student.major},
+		#{student.mobile},
+		#{student.address},
+		#{student.people},
+		#{student.family_work},
+		#{student.hoby},
+		#{student.advantage},
+		#{student.specialty},
+		#{student.shortcoming},
+		#{student.photo},
+		#{student.rich_poor},
+		#{student.family_education},
+		#{student.study_time},
+		#{student.ability_id}
+		)
+	</insert>
+
+</mapper>
