@@ -1,4 +1,4 @@
-package com.adaque.wwq.questionaire.dao.privilege;
+package com.adaque.wwq.questionaire.dao.teacher;
 
 import java.util.List;
 
