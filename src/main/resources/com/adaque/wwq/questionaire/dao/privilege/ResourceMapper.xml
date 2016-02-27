@@ -6,11 +6,11 @@
 	
 	
 	
-	<select id="getResourceById" parameterType="string" resultType="resource">
+	<select id="getResourceById" parameterType="int" resultType="resource">
 		SELECT ID,NAME,PRIVILEGE_ID,PATH FROM T_RESOURCE WHERE ID=#{value}
 	</select>
 	
-	<select id="getResourceByName" parameterType="string" resultType="resource">
+	<select id="getResourceByName" parameterType="int" resultType="resource">
 		SELECT ID,NAME,PRIVILEGE_ID,PATH FROM T_RESOURCE T WHERE T.NAME=#{value}
 	</select>
 	
@@ -22,7 +22,7 @@
 		UPDATE T_RESOURCE T SET T.NAME=#{resource.name},SET T.PRIVILEGE_ID=#{resource.privilege_id},SET T.PATH=#{resource.path}  WHERE ID=#{resource.id}
 	</update>
 	
-	<delete id="deleteResourceById" parameterType="string">
+	<delete id="deleteResourceById" parameterType="int">
 		DELETE FROM T_RESOURCE WHERE ID=#{value}
 	</delete>
 	

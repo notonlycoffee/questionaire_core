@@ -13,7 +13,7 @@ public class ResourceServiceImpl implements ResourceService {
 	@Autowired
 	private ResourceMapper resourceMapper;
 
-	public Resource getResourceById(String id) {
+	public Resource getResourceById(int id) {
 		Resource resource = resourceMapper.getResourceById(id);
 		return resource;
 	}
@@ -28,17 +28,32 @@ public class ResourceServiceImpl implements ResourceService {
 		return resorceList;
 	}
 
-	public void updateResourceById(String id) {
+	public void updateResourceById(int id) {
 		resourceMapper.updateResourceById(id);
 
 	}
 
-	public void deleteResourceById(String id) {
+	public void deleteResourceById(int id) {
 		resourceMapper.deleteResourceById(id);
 	}
 
 	public void addResource(Resource resource) {
 		resourceMapper.addResource(resource);
+	}
+
+	public Resource getResourceById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void updateResourceById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteResourceById(String id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

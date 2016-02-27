@@ -1,6 +1,5 @@
 package com.adaque.wwq.webkit.web.action;
 
-import org.junit.runners.Parameterized.Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,9 +9,14 @@ public class IndexAction {
 	
 	
 	
+	@RequestMapping(value="include.xhtml")
+	public String include() {
+		return "include";
+	}
 	
 	@RequestMapping(value="gotologin.xhtml")
 	public String gotologin() {
+		
 		return "/login";
 	}
 	

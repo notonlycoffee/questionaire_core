@@ -5,14 +5,14 @@ import java.util.List;
 import com.adaque.wwq.questionaire.po.Resource;
 
 public interface ResourceService {
-	public Resource getResourceById(String id);
+	public Resource getResourceById(int id);
 
 	public Resource getResourceByName(String name);
 
 	public List<Resource> getAllResource();
 
-	public void updateResourceById(String id);
+	public void updateResourceById(int id);
 
-	public void deleteResourceById(String id);
+	public void deleteResourceById(int id);
 
 }

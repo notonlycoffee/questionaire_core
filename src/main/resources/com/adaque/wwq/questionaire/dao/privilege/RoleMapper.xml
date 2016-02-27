@@ -10,7 +10,7 @@
 		
 	</resultMap>
 	
-	<select id="getRoleById" parameterType="string" resultMap="queryPrivilegeMap">
+	<select id="getRoleById" parameterType="int" resultMap="queryPrivilegeMap">
 		SELECT ID,NAME FROM T_ROLE T WHERE T.ID=#{value}
 	</select>
 	
@@ -22,7 +22,7 @@
 		UPDATE T_ROLE T SET T.NAME=#{role.name} WHERE T.ID=#{role.id}
 	</update>
 	
-	<delete id="deleteRoleById" parameterType="string">
+	<delete id="deleteRoleById" parameterType="int">
 		DELETE FROM T_ROLE WHERE ID=#{value}
 	</delete>
 	

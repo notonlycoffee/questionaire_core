@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.adaque.wwq.questionaire.dao.privilege.TeacherMapper">
+<mapper namespace="com.adaque.wwq.questionaire.dao.teacher.TeacherMapper">
 	
 	<select id="getTeacherById" parameterType="string" resultType="teacher">
 		SELECT

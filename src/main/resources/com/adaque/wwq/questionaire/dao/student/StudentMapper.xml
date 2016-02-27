@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.adaque.wwq.questionaire.dao.privilege.StudentMapper">
+<mapper namespace="com.adaque.wwq.questionaire.dao.student.StudentMapper">
 
 
 	<select id="getStudentById" parameterType="string" resultType="student">
@@ -38,7 +38,7 @@
 	</select>
 
 	<!-- 根据用户名和密码查询 -->
-	<select id="getStduentByNameAndPwd" parameterType="studentMapper" resultType="student">
+	<select id="getStduentByNameAndPwd" parameterType="studentModel" resultType="student">
 		SELECT
 		T.ID,
 		T.NUM,

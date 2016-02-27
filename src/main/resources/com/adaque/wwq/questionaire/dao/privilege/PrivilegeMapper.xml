@@ -5,7 +5,7 @@
 <mapper namespace="com.adaque.wwq.questionaire.dao.privilege.PrivilegeMapper">
 	
 	
-	<select id="getPrivilegeById" parameterType="string" resultType="privilege">
+	<select id="getPrivilegeById" parameterType="int" resultType="privilege">
 		SELECT ID,NAME FROM T_PRIVILEGE WHERE ID=#{value}
 	</select>
 	
@@ -14,11 +14,11 @@
 	</select>
 	
 	
-	<update id="updatePrivilegeById" parameterType="string">
+	<update id="updatePrivilegeById" parameterType="int">
 		UPDATE T_PRIVILEGE T SET T.NAME=#{value}
 	</update>
 	
-	<delete id="deletePrivilegeById" parameterType="string">
+	<delete id="deletePrivilegeById" parameterType="int">
 		DELETE FROM T_PRIVILEGE T WHERE T.ID=#{value}
 	</delete>
 	
