@@ -1,4 +1,4 @@
-package com.adaque.wwq.questionaire.model.student;
+package com.adaque.wwq.questionaire.model.teacher;
 
 public class TeacherModel {
 	private String username;
@@ -15,6 +15,8 @@ public class TeacherModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	
 	
 	
 }

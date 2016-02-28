@@ -2,7 +2,7 @@ package com.adaque.wwq.questionaire.dao.teacher;
 
 import java.util.List;
 
-import com.adaque.wwq.questionaire.model.student.TeacherModel;
+import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 
 public interface TeacherMapper {
@@ -18,4 +18,6 @@ public interface TeacherMapper {
 	public void addTeacher(Teacher teacher);
 	
 	public void deleteTeacherById(String id);
+	
+	public String getTeacherRoleId(String teacherId);
 }

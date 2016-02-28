@@ -13,33 +13,28 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	
 	
-	
-	<!-- 处理器适配器 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" /> -->
-	<!-- 注解方式 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" /> -->
-	
-	<!-- 处理器 -->
-	<!-- <bean name="/query.xhtml" class="com.adaque.wwq.HandlerTest" /> -->
-	
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<!-- 处理器映射器 -->
-	<!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /> -->
-	
-	<!-- 注解方式 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> -->
-	
-	
 	<!-- 加载handler，这里是加载controller类型的handler -->
 	<context:component-scan base-package="com.adaque.wwq.webkit.web.action"></context:component-scan>
 	
 	
-	<mvc:annotation-driven/>
+	<!-- <mvc:annotation-driven/> -->
+	
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+		<list>
+		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+		</list>
+		</property>
+	</bean>
 	
 	
 	

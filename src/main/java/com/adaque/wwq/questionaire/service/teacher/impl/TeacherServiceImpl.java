@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.adaque.wwq.questionaire.dao.teacher.TeacherMapper;
-import com.adaque.wwq.questionaire.model.student.TeacherModel;
+import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
 

@@ -12,7 +12,15 @@ public class Privilege implements Serializable {
 	private int id;
 	private String name;
 	private List<Resource> resourceList = new ArrayList();
+	private List<Privilege> ownPrivilege = new ArrayList();
 	
+	
+	public List<Privilege> getOwnPrivilege() {
+		return ownPrivilege;
+	}
+	public void setOwnPrivilege(List<Privilege> ownPrivilege) {
+		this.ownPrivilege = ownPrivilege;
+	}
 	public List<Resource> getResourceList() {
 		return resourceList;
 	}

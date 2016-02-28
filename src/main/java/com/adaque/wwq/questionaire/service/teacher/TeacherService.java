@@ -2,7 +2,7 @@ package com.adaque.wwq.questionaire.service.teacher;
 
 import java.util.List;
 
-import com.adaque.wwq.questionaire.model.student.TeacherModel;
+import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 
 public interface TeacherService {

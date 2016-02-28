@@ -28,35 +28,35 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>3.2.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>3.2.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>3.2.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>3.2.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>3.2.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
@@ -128,6 +128,28 @@
 			<artifactId> aspectjweaver</artifactId>
 			<version> 1.6.11</version>
 		</dependency>
+		
+		
+		<!-- jackson -->
+			<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		
+		<!-- StringUtils -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+  		</dependency>
+		
 
 	</dependencies>
 

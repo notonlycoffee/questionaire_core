@@ -5,16 +5,20 @@
 <mapper namespace="com.adaque.wwq.questionaire.dao.privilege.RoleMapper">
 	
 	
-	<resultMap type="com.adaque.wwq.questionaire.po.Role" id="queryPrivilegeMap">
-		
-		
+	<resultMap type="com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel" id="queryUserRoleMao">
+		<result  column="resource_id" property="resource_id"/>
+		<result  column="name" property="resource_name"/>
+		<result  column="path" property="resource_path"/>
+		<result  column="privilege_id" property="privilege_id"/>
+		<result  column="privilege_name" property="privilege_name"/>
 	</resultMap>
 	
-	<select id="getRoleById" parameterType="int" resultMap="queryPrivilegeMap">
+	
+	<select id="getRoleById" parameterType="int" resultType="role">
 		SELECT ID,NAME FROM T_ROLE T WHERE T.ID=#{value}
 	</select>
 	
-	<select id="getAllRole">
+	<select id="getAllRole" resultType="role">
 		SELECT ID,NAME FROM T_ROLE
 	</select>
 	
@@ -30,5 +34,39 @@
 		INSERT INTO T_ROLE(ID,NAME) VALUES(#{role.id},#{role.name})
 	</insert>
 	
+	
+	
+	<select id="getUserRoleAndPrivilege" parameterType="string" resultMap="queryUserRoleMao">
+		SELECT
+			a.id resource_id,
+			a. NAME,
+			a.path,
+			b.id privilege_id,
+			b. NAME privilege_name
+		FROM
+			t_resource a,
+			t_privilege b
+		WHERE
+			a.privilege_id = b.id
+		AND a.privilege_id IN (
+			SELECT
+				t.id
+			FROM
+				t_privilege T
+			WHERE
+				T.ID IN (
+					SELECT
+						c.function_id
+					FROM
+						T_ROLE A,
+						T_PRIVILEGE B,
+						T_PRIVILEGE_ROLE C
+					WHERE
+						A.ID = C.role_id
+					AND B.ID = C.FUNCTION_ID
+					AND a.id = ${value}
+				)
+		)
+	</select>
 	
 </mapper>

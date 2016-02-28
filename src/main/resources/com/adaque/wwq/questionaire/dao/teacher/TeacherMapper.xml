@@ -23,7 +23,7 @@
 			T.PASSWORD,
 			T.TYPE
 			FROM T_TEACHER T
-			WHERE T.NUM=#{teacherModel.num} AND T.PASSWORD=#{teacherModel.password}
+			WHERE T.NUM=#{username} AND T.PASSWORD=#{password}
 	</select>
 	
 	<select id="getAllTeacher" resultType="teacher">
@@ -55,6 +55,21 @@
 	<delete id="deleteTeacherById" parameterType="string">
 		DELETE FROM T_TEACHER T WHERE T.ID=#{value}
 	</delete>
+	
+	
+	<select id="getTeacherRoleId" parameterType="string" resultType="string">
+			SELECT
+			B.ID
+		FROM
+			T_TEACHER A,
+			T_ROLE B,
+			T_TEACHER_ROLE C
+		WHERE
+			A.ID = C.TEACHER_ID
+		AND B.ID = C.ROLE_TEACHER_ID
+		AND A.ID = #{value}
+	</select>
+	
 	
 	
 </mapper>

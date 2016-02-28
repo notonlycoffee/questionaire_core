@@ -67,7 +67,7 @@
 		FROM
 		T_STUDENT T
 		WHERE
-		T.NUM =#{studentMapper.username} AND T.PASSWORD=#{studentMapper.password}
+		T.NUM =#{username} AND T.PASSWORD=#{password}
 	</select>
 
 
