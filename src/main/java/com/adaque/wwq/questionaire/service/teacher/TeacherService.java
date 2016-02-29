@@ -17,4 +17,6 @@ public interface TeacherService {
 	public void addTeacher(Teacher teacher);
 
 	public void deleteTeacherById(String id);
+	
+	public String getTeacherRoleId(String teacherId);
 }

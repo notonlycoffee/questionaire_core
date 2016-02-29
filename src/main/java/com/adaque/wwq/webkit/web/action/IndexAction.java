@@ -12,28 +12,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.adaque.wwq.questionaire.dao.privilege.RoleMapper;
-import com.adaque.wwq.questionaire.dao.student.StudentMapper;
-import com.adaque.wwq.questionaire.dao.teacher.TeacherMapper;
 import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.po.Teacher;
+import com.adaque.wwq.questionaire.service.privilege.RoleService;
+import com.adaque.wwq.questionaire.service.student.StudentServie;
+import com.adaque.wwq.questionaire.service.teacher.TeacherService;
 
 
 @Controller
 public class IndexAction {
 	
 	@Autowired
-	private RoleMapper roleMapper;
+	private RoleService roleService;
 	
 	@Autowired
-	private StudentMapper studentMapper;
+	private StudentServie studentService;
 	
 	@Autowired
-	private TeacherMapper teacherMapper;
+	private TeacherService teacherService;
 	
 	@RequestMapping(value="include.xhtml")
 	public String include() {
@@ -50,8 +50,8 @@ public class IndexAction {
 	public String login(String username,String password,String userroleid,HttpServletRequest request) {
 		
 		if(StringUtils.isNotBlank(userroleid)) {
-			Role role = roleMapper.getRoleById(Integer.valueOf(userroleid));
-			List<QueryPrivilegeModel> rolePriList = roleMapper.getUserRoleAndPrivilege(role.getId());
+			Role role = roleService.getRoleById(Integer.valueOf(userroleid));
+			List<QueryPrivilegeModel> rolePriList = roleService.getUserRoleAndPrivilege(role.getId());
 			
 			
 			
@@ -59,11 +59,13 @@ public class IndexAction {
 				StudentModel studentModel = new StudentModel();
 				studentModel.setUsername(username);
 				studentModel.setPassword(password);
-				Student student = studentMapper.getStduentByNameAndPwd(studentModel);
+				Student student = studentService.getStduentByNameAndPwd(studentModel);
 				if(student == null) {
+					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
 					return "/login";
 				} else {
 					request.getSession().setAttribute("user", student);
+					request.setAttribute("ctx", request.getContextPath());
 					return "index";
 				}
 				
@@ -74,15 +76,18 @@ public class IndexAction {
 				TeacherModel teacherModel = new TeacherModel();
 				teacherModel.setPassword(password);
 				teacherModel.setUsername(username);
-				Teacher teacher = teacherMapper.getTeacherByNameAndPassword(teacherModel);
+				Teacher teacher = teacherService.getTeacherByNameAndPassword(teacherModel);
 				if(teacher == null) {
-					return "login";
+					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
+					return "/login";
 				} else {
-					String roleId = teacherMapper.getTeacherRoleId(teacher.getId());
+					String roleId = teacherService.getTeacherRoleId(teacher.getId());
 					if(userroleid.equals(roleId)) {
 						request.getSession().setAttribute("user", teacher);
+						request.setAttribute("ctx", request.getContextPath());
 						return "index";
 					} else {
+						request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
 						return "/login";
 					}
 					
@@ -97,7 +102,7 @@ public class IndexAction {
 	
 	@RequestMapping(value="getAllRole.xhtml")
 	public @ResponseBody List getAllRole(String username) {
-		List<Role> roleList = roleMapper.getAllRole();
+		List<Role> roleList = roleService.getAllRole();
 		
 		List list = new ArrayList();
 		for(Role r : roleList) {

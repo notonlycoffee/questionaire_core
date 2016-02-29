@@ -3,11 +3,13 @@ package com.adaque.wwq.questionaire.service.privilege.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.PrivilegeMapper;
 import com.adaque.wwq.questionaire.po.Privilege;
 import com.adaque.wwq.questionaire.service.privilege.PrivilegeService;
 
+@Service
 public class PrivilegeServiceImpl implements PrivilegeService {
 
 	@Autowired

@@ -3,12 +3,13 @@ package com.adaque.wwq.questionaire.service.student.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.student.StudentMapper;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
-
+@Service
 public class StudentServieImpl implements StudentServie {
 
 	@Autowired

@@ -3,13 +3,14 @@ package com.adaque.wwq.questionaire.service.teacher.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.teacher.TeacherMapper;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
 
-
+@Service
 public class TeacherServiceImpl implements TeacherService {
 
 	@Autowired
@@ -40,6 +41,10 @@ public class TeacherServiceImpl implements TeacherService {
 
 	public void deleteTeacherById(String id) {
 		teacherMapper.deleteTeacherById(id);
+	}
+
+	public String getTeacherRoleId(String teacherId) {
+		return teacherMapper.getTeacherRoleId(teacherId);
 	}
 	
 }

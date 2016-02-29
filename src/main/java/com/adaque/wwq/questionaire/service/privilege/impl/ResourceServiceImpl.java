@@ -3,11 +3,13 @@ package com.adaque.wwq.questionaire.service.privilege.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.ResourceMapper;
 import com.adaque.wwq.questionaire.po.Resource;
 import com.adaque.wwq.questionaire.service.privilege.ResourceService;
 
+@Service
 public class ResourceServiceImpl implements ResourceService {
 
 	@Autowired

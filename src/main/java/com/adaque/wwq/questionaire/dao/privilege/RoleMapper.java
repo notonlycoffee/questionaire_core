@@ -1,3 +1,4 @@
+
 package com.adaque.wwq.questionaire.dao.privilege;
 
 import java.util.List;

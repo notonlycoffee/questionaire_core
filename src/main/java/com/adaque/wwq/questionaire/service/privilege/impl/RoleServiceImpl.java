@@ -3,11 +3,14 @@ package com.adaque.wwq.questionaire.service.privilege.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.RoleMapper;
+import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.service.privilege.RoleService;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
@@ -33,6 +36,11 @@ public class RoleServiceImpl implements RoleService {
 
 	public void addRole(Role role) {
 		roleMapper.addRole(role);
+	}
+
+	public List<QueryPrivilegeModel> getUserRoleAndPrivilege(int id) {
+		List<QueryPrivilegeModel> modelList = roleMapper.getUserRoleAndPrivilege(id);
+		return modelList;
 	}
 
 }
