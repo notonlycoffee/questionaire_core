@@ -27,9 +27,7 @@
 				<input style="width:250px;height:30px;" id="dd" class="easyui-textbox" data-options="iconCls:'icon-man',prompt:'请输入账号'"  name="username"> <br /><br />
 				<input style="width:250px;height:30px;" class="easyui-textbox" data-options="iconCls:'icon-lock',prompt:'请输入密码',type:'password'" name="password" > <br /><br />
 				
-				<input id="cc" />  
-				<input type="hidden" name="userroleid" id="roleidvalue" />
-				<br /><br />
+				<input id="cc" name="userroleid" /> <br />
 				<input id="submit_bu" class="input_text" type="submit" value="登&nbsp;&nbsp;陆" />
 				
 			</form>
@@ -49,12 +47,9 @@
 			textField:'text',
 			panelHeight:'auto',
 			onSelect:function(param) {
-				console.log(param);
-				$('#roleidvalue').val(param.id);
 			}
 		});
 		
-		$('#roleidvalue').val($('#cc').combobox("getValue"));
 		
 		
 		var me = $('#errorid').val();

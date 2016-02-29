@@ -8,11 +8,22 @@
 <jsp:include page="/include.xhtml"></jsp:include>
 
 </head>
-<body>
-	<h1>主页面</h1>
+<body class="easyui-layout">
+
+	<!-- header -->
+	<%-- <div data-options="region:'north',href:'${ctx }/north.xhtml',border:'false'" style="width:100%;height:50px;"></div> --%>
+	<div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:80px;border-bottom:solid 1px red;overflow:hidden;"></div>
 	
 	
+	<!-- west -->
+	<div data-options="region:'west',href:'${ctx }/west.xhtml',border:'false',title:'导航菜单',split:'false'" style="width:180px;height:100%;"></div>
 	
+	<!-- center -->
+	<!-- <div region="center" data-options="border:'false'"></div> -->
+	
+	
+	<!-- footer -->
+	<div data-options="region:'south',href:'${ctx }/south.xhtml',border:'false'" style="width:100%;height:30px;"></div>
 	
 </body>
 </html>

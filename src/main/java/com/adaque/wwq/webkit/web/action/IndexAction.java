@@ -68,10 +68,6 @@ public class IndexAction {
 					request.setAttribute("ctx", request.getContextPath());
 					return "index";
 				}
-				
-				
-				
-				
 			} else {
 				TeacherModel teacherModel = new TeacherModel();
 				teacherModel.setPassword(password);
@@ -118,4 +114,23 @@ public class IndexAction {
 		
 		
 	}
+
+
+	@RequestMapping(value="north.xhtml")
+	public String north(){
+		System.out.println();
+		return "layout/north";
+	}
+	
+	@RequestMapping(value="south.xhtml")
+	public String south(){
+		return "layout/south";
+	}
+	
+	@RequestMapping(value="west.xhtml")
+	public String west(){
+		return "layout/west";
+	}
+
+
 }
