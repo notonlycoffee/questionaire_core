@@ -60,11 +60,11 @@ public class IndexAction {
 				studentModel.setUsername(username);
 				studentModel.setPassword(password);
 				Student student = studentService.getStduentByNameAndPwd(studentModel);
-				student.getRoleList().add(role);
 				if(student == null) {
 					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
 					return "/login";
 				} else {
+					student.getRoleList().add(role);
 					request.getSession().setAttribute("user", student);
 					request.setAttribute("ctx", request.getContextPath());
 					return "index";
@@ -74,12 +74,12 @@ public class IndexAction {
 				teacherModel.setPassword(password);
 				teacherModel.setUsername(username);
 				Teacher teacher = teacherService.getTeacherByNameAndPassword(teacherModel);
-				teacher.getRoleList().add(role);
 				if(teacher == null) {
 					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
 					return "/login";
 				} else {
 					String roleId = teacherService.getTeacherRoleId(teacher.getId());
+					teacher.getRoleList().add(role);
 					if(userroleid.equals(roleId)) {
 						request.getSession().setAttribute("user", teacher);
 						request.setAttribute("ctx", request.getContextPath());
@@ -93,9 +93,11 @@ public class IndexAction {
 				}
 				
 			}
+		} else {
+			request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
+			return "/login";
 		}
 		
-		return null;
 	}
 	
 	@RequestMapping(value="getAllRole.xhtml")
@@ -171,5 +173,14 @@ public class IndexAction {
 		return pri_List;
 	}
 
+	
+	@RequestMapping(value="logout.xhtml")
+	public String logout(HttpServletRequest request) {
+		Object obj = request.getSession(false).getAttribute("user");
+		if(obj != null) {
+			request.getSession(false).removeAttribute("user");
+		}
+		return "redirect:/";
+	}
 
 }

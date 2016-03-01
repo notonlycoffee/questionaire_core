@@ -21,17 +21,11 @@
 	
 	<!-- center -->
 	<div region="center" data-options="border:'false'">
-	<div id="tt" class="easyui-tabs" style="width:500px;height:250px;">   
-    <div title="Tab1" style="padding:20px;display:none;">   
-        tab1    
-    </div>   
-    <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">   
-        tab2    
-    </div>   
-    <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">   
-        tab3    
-    </div>   
-</div>
+		<div id="easyui_tabs" class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+			<div data-options="title:'首页',closable:false">
+				<div style="text-align:center;margin:100px auto 0 auto;">欢迎使用系统</div>
+			</div>
+		</div>
 	</div>
 	
 	
@@ -40,4 +34,37 @@
 	<div data-options="region:'south',href:'${ctx }/south.xhtml',border:'false'" style="width:100%;height:30px;"></div>
 	
 </body>
+<script>
+	function addTab(node) {
+		var currentTab = $('#easyui_tabs');
+		if(currentTab.tabs('exists',node.text)) {
+			currentTab.tabs('select',node.text);
+		} else {
+				var url = node.attributes.url;
+				
+				if(url && url.length>0) {
+					url = '${ctx}' + url;
+					var iframe = "<iframe src='" + (url) + "' frameborder='0' style='border:0;width:100%;height:100%;margin-top:1px;' scrolling=no ></iframe>";
+					currentTab.tabs('add',{
+						title:node.text,
+						content:iframe,
+						closable:true,
+						fit : true,
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler : function(){
+							 //刷新选项卡里的内容
+							 var tab = currentTab.tabs('getTab',node.text);
+							 currentTab.tabs('update',{
+									tab:tab,
+									options:tab.panel('options')
+								});
+							}
+						}]
+					});
+				}
+			}
+			
+	}
+</script>
 </html>

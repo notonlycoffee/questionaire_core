@@ -3,12 +3,20 @@
 
 
 
-<ul id="tree_meny"></ul>
+<ul id="tree_menu"></ul>
 
 <script>
-	$('#tree_meny').tree({
+	$('#tree_menu').tree({
 		url:'${pageContext.request.contextPath}/getTree.xhtml'
 	});
+	
+	$('#tree_menu').tree({
+		onClick: function(node){
+			addTab(node);
+		}
+	});
+
+
 </script>
 
  

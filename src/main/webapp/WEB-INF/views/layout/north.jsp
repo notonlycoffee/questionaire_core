@@ -6,7 +6,7 @@
 	<div style="float:right;margin:25px 20px 0 0;">
 	欢迎您,&nbsp;&nbsp;&nbsp;<span style="font-weight:bolder;">${user.name }</span> &nbsp;&nbsp;&nbsp;&nbsp;
 	
-	<a style="text-decoration:none;" href="${ctx }/logout.xhtml">[退出]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a style="text-decoration:none;" href="${ctx }/changepassword.xhtml">[修改密码]</a>
+	<a style="text-decoration:none;" href="${pageContext.request.contextPath }/logout.xhtml">[退出]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a style="text-decoration:none;" href="${pageContext.request.contextPath }/changepassword.xhtml">[修改密码]</a>
 	</div>
 </div>
