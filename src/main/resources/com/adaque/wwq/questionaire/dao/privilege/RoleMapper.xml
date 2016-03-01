@@ -36,7 +36,7 @@
 	
 	
 	
-	<select id="getUserRoleAndPrivilege" parameterType="string" resultMap="queryUserRoleMao">
+	<!-- <select id="getUserRoleAndPrivilege" parameterType="string" resultMap="queryUserRoleMao">
 		SELECT
 			a.id resource_id,
 			a. NAME,
@@ -67,6 +67,29 @@
 					AND a.id = ${value}
 				)
 		)
+	</select> -->
+	
+	
+	<select id="getUserRoleMenu" parameterType="int" resultType="menuTreeModel">
+	SELECT B.ID,B.NAME TEXT,C.FUNCTION_ID C_ID FROM 
+		T_ROLE A,
+		T_PRIVILEGE B,
+		T_PRIVILEGE_ROLE C
+		WHERE 
+		A.ID=C.ROLE_ID AND 
+		B.ID=C.FUNCTION_ID AND 
+		A.ID=${value}
 	</select>
+	
+	
+	<select id="getUserRoleLeave" parameterType="int" resultType="menuTreeModel">
+	SELECT B.ID,B.NAME TEXT,B.PATH URL FROM 
+		T_PRIVILEGE A,
+		T_RESOURCE B
+		WHERE 
+		A.ID=B.PRIVILEGE_ID AND
+		A.ID=${value}
+	</select>
+	
 	
 </mapper>

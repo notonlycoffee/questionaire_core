@@ -1,7 +1,10 @@
 package com.adaque.wwq.questionaire.model.privilege;
 
-public class QueryPrivilegeModel {
+import java.io.Serializable;
+
+public class QueryPrivilegeModel implements Serializable {
 	
+	private static final long serialVersionUID = -1511269936040043615L;
 	private int resource_id;
 	private int privilege_id;
 	private String resource_name;

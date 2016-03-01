@@ -12,14 +12,28 @@
 
 	<!-- header -->
 	<%-- <div data-options="region:'north',href:'${ctx }/north.xhtml',border:'false'" style="width:100%;height:50px;"></div> --%>
-	<div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:80px;border-bottom:solid 1px red;overflow:hidden;"></div>
+	<%-- <div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:80px;border-bottom:solid 1px red;overflow:hidden;"></div> --%>
+	<div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:65px;overflow:hidden;" ></div>
 	
 	
 	<!-- west -->
 	<div data-options="region:'west',href:'${ctx }/west.xhtml',border:'false',title:'导航菜单',split:'false'" style="width:180px;height:100%;"></div>
 	
 	<!-- center -->
-	<!-- <div region="center" data-options="border:'false'"></div> -->
+	<div region="center" data-options="border:'false'">
+	<div id="tt" class="easyui-tabs" style="width:500px;height:250px;">   
+    <div title="Tab1" style="padding:20px;display:none;">   
+        tab1    
+    </div>   
+    <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">   
+        tab2    
+    </div>   
+    <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">   
+        tab3    
+    </div>   
+</div>
+	</div>
+	
 	
 	
 	<!-- footer -->

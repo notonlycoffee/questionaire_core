@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.RoleMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.service.privilege.RoleService;
@@ -38,8 +39,14 @@ public class RoleServiceImpl implements RoleService {
 		roleMapper.addRole(role);
 	}
 
-	public List<QueryPrivilegeModel> getUserRoleAndPrivilege(int id) {
-		List<QueryPrivilegeModel> modelList = roleMapper.getUserRoleAndPrivilege(id);
+
+	public List<MenuTreeModel> getUserRoleMenu(int roleid) {
+		List<MenuTreeModel> modelList = roleMapper.getUserRoleMenu(roleid);
+		return modelList;
+	}
+
+	public List<MenuTreeModel> getUserRoleLeave(int privilegeid) {
+		List<MenuTreeModel> modelList = roleMapper.getUserRoleLeave(privilegeid);
 		return modelList;
 	}
 

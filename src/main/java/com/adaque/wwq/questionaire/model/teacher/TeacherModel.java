@@ -1,6 +1,9 @@
 package com.adaque.wwq.questionaire.model.teacher;
 
-public class TeacherModel {
+import java.io.Serializable;
+
+public class TeacherModel implements Serializable {
+	private static final long serialVersionUID = -2251296394218120738L;
 	private String username;
 	private String password;
 	public String getUsername() {

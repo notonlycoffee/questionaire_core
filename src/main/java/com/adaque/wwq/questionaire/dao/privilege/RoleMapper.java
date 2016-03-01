@@ -3,6 +3,7 @@ package com.adaque.wwq.questionaire.dao.privilege;
 
 import java.util.List;
 
+import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.po.Role;
 
@@ -17,5 +18,8 @@ public interface RoleMapper {
 	
 	public void addRole(Role role);
 	
-	public List<QueryPrivilegeModel> getUserRoleAndPrivilege(int id);
+	
+	public List<MenuTreeModel> getUserRoleMenu(int roleid);
+	
+	public List<MenuTreeModel> getUserRoleLeave(int privilegeid);
 }

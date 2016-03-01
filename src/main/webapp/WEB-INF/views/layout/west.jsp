@@ -3,4 +3,13 @@
 
 
 
-<p>sdfsdf</p>
+<ul id="tree_meny"></ul>
+
+<script>
+	$('#tree_meny').tree({
+		url:'${pageContext.request.contextPath}/getTree.xhtml'
+	});
+</script>
+
+ 
+ 
