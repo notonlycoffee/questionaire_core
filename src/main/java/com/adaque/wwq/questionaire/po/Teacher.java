@@ -11,9 +11,17 @@ public class Teacher implements Serializable {
 	private String num;
 	private String name;
 	private String password;
+	private String sex;
 	int type;
 	private List<Role> roleList = new ArrayList();
 	private List<Exam_plan> exam_planList = new ArrayList();
+	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public String getId() {
 		return id;
 	}

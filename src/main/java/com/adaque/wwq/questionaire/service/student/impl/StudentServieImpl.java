@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.student.StudentMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
@@ -38,8 +39,13 @@ public class StudentServieImpl implements StudentServie {
 		studentMapper.updateStudentById(student);
 	}
 
-	public void addStudent(Student student) {
-		studentMapper.addStudent(student);
+	public List<Student> getStudentByNumAndName(UserForm userForm) {
+		return studentMapper.getStudentByNumAndName(userForm);
+	}
+
+	@Override
+	public void addFormStudent(Student student) {
+		studentMapper.addFormStudent(student);
 	}
 	
 	

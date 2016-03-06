@@ -10,7 +10,8 @@
 			T.NUM,
 			T.NAME,
 			T.PASSWORD,
-			T.TYPE
+			T.TYPE,
+			T.SEX
 		FROM T_TEACHER T 
 		WHERE T.ID=#{value}
 	</select>
@@ -21,7 +22,8 @@
 			T.NUM,
 			T.NAME,
 			T.PASSWORD,
-			T.TYPE
+			T.TYPE,
+			T.SEX
 			FROM T_TEACHER T
 			WHERE T.NUM=#{username} AND T.PASSWORD=#{password}
 	</select>
@@ -32,24 +34,25 @@
 			T.NUM,
 			T.NAME,
 			T.PASSWORD,
-			T.TYPE
-		FROM T_TEACHER
+			T.TYPE,
+			T.SEX
+		FROM T_TEACHER T
 	</select>
 	
 	<update id="updateTeacherById" parameterType="teacher">
 		UPDATE T_TEACHER T SET
-			T.NUM=#{teacher.num},
-			T.NAME=#{teacher.name},
-			T.PASSWORD=#{teacher.password},
-			T.TYPE=#{teacher.type}
-		WHERE T.ID=#{teacher.id}
+			T.NUM=#{num},
+			T.NAME=#{name},
+			T.PASSWORD=#{password},
+			T.TYPE=#{type}
+		WHERE T.ID=#{id}
 	</update>
 	
 	<insert id="addTeacher" parameterType="teacher">
 		INSERT INTO T_TEACHER
-		(ID,NUM,NAME,PASSWORD,TYPE)
+		(ID,NUM,NAME,PASSWORD,TYPE,SEX)
 		VALUES
-		(#{teacher.id},#{teacher.num},#{teacher.name},#{teacher.password},#{teacher.type})
+		(#{id},#{num},#{name},#{password},#{type},#{sex})
 	</insert>
 	
 	<delete id="deleteTeacherById" parameterType="string">
@@ -70,6 +73,27 @@
 		AND A.ID = #{value}
 	</select>
 	
+	
+	<select id="getTeacherByNumAndName" parameterType="userForm" resultType="teacher">
+		SELECT
+			T.ID,
+			T.NUM,
+			T. NAME,
+			T. PASSWORD,
+			T.TYPE,
+			T.SEX
+		FROM
+			T_TEACHER T
+		WHERE 1=1
+		
+		<if test="null!=num and num != ''">
+		    AND T.NUM = #{num}
+    	</if>
+    	
+    	<if test="null!=name and name != ''">
+		    AND T. NAME = #{name}
+    	</if>
+	</select>
 	
 	
 </mapper>

@@ -7,7 +7,7 @@
 
 <script>
 	$('#tree_menu').tree({
-		url:'${pageContext.request.contextPath}/getTree.xhtml'
+		url:'${pageContext.request.contextPath}/getTree.xhtml',
 	});
 	
 	$('#tree_menu').tree({

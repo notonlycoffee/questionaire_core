@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adaque.wwq.questionaire.model.easyuimodel.Attribute;
 import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
-import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Role;
@@ -44,13 +44,24 @@ public class IndexAction {
 	}
 	
 	@RequestMapping(value="gotologin.xhtml")
-	public String gotologin() {
+	public String gotologin(HttpServletRequest request) {
+		if(request.getSession().getAttribute("user") != null) {
+			return "index";
+		} else {
+			return "/login";
+		}
 		
-		return "/login";
 	}
 	
 	@RequestMapping(value="login.xhtml")
 	public String login(String username,String password,String userroleid,HttpServletRequest request) {
+		
+		Object obj = request.getSession().getAttribute("user");
+		if(obj != null) {
+			return "index";
+		} else if(obj == null && username == null) {
+			return "login";
+		}
 		
 		if(StringUtils.isNotBlank(userroleid)) {
 			Role role = roleService.getRoleById(Integer.valueOf(userroleid));
@@ -66,8 +77,7 @@ public class IndexAction {
 				} else {
 					student.getRoleList().add(role);
 					request.getSession().setAttribute("user", student);
-					request.setAttribute("ctx", request.getContextPath());
-					return "index";
+					return "/index";
 				}
 			} else {
 				TeacherModel teacherModel = new TeacherModel();
@@ -82,7 +92,6 @@ public class IndexAction {
 					teacher.getRoleList().add(role);
 					if(userroleid.equals(roleId)) {
 						request.getSession().setAttribute("user", teacher);
-						request.setAttribute("ctx", request.getContextPath());
 						return "index";
 					} else {
 						request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
@@ -166,13 +175,8 @@ public class IndexAction {
 				System.out.println();
 			}
 		}
-		
-		System.out.println();
-		//roleService.getUserRoleMenu(roleid);
-		
 		return pri_List;
 	}
-
 	
 	@RequestMapping(value="logout.xhtml")
 	public String logout(HttpServletRequest request) {

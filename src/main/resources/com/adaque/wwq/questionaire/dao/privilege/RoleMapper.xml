@@ -15,11 +15,11 @@
 	
 	
 	<select id="getRoleById" parameterType="int" resultType="role">
-		SELECT ID,NAME FROM T_ROLE T WHERE T.ID=#{value}
+		SELECT ID,NAME,DESCRIP FROM T_ROLE T WHERE T.ID=#{value}
 	</select>
 	
 	<select id="getAllRole" resultType="role">
-		SELECT ID,NAME FROM T_ROLE
+		SELECT ID,NAME,DESCRIP FROM T_ROLE
 	</select>
 	
 	<update id="updateRoleById" parameterType="role">

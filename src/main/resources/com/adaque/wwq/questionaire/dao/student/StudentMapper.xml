@@ -5,6 +5,7 @@
 <mapper namespace="com.adaque.wwq.questionaire.dao.student.StudentMapper">
 
 
+
 	<select id="getStudentById" parameterType="string" resultType="student">
 		SELECT
 		T.ID,
@@ -109,38 +110,29 @@
 
 
 	<update id="updateStudentById" parameterType="student">
-		UPDATE T_STUDENT
-		SET
-		T.NUM=#{student.num},
-		T. NAME=#{student.name},
-		T. PASSWORD=#{student.password},
-		T.COLLEGE_ID=#{student.college_id},
-		T.MAJOR_ID=#{student.major_id},
-		T.CLASS_ID=#{student.class_id},
-		T.SEX=#{student.sex},
-		T.BIRTHDAY=#{student.birthday},
-		T.QQ=#{student.qq},
-		T.MAJOR=#{student.major},
-		T.MOBILE=#{student.mobile},
-		T.ADDRESS=#{student.address},
-		T.PEOPLE=#{student.people},
-		T.FAMILY_WORK=#{student.family_work},
-		T.HOBY=#{student.hoby},
-		T.ADVANTAGE=#{student.advantage},
-		T.SPECIALTY=#{student.specialty},
-		T.SHORTCOMING=#{student.shortcoming},
-		T.PHOTO=#{student.photo},
-		T.RICH_POOR=#{student.rich_poor},
-		T.FAMILY_EDUCATION=#{student.family_education},
-		T.STUDY_TIME=#{student.study_time},
-		T.ABILITY_ID=#{student.ability_id}
-		WHERE
-		T.ID =#{student.id}
+		
 	</update>
 
-	<insert id="addStudent" parameterType="student">
-		INSERT INTO T_STUDENT
-		(
+	
+	
+	<insert id="addFormStudent" parameterType="student">
+		INSERT INTO T_STUDENT (
+			ID,
+			SEX,
+			NUM,
+			NAME,
+			PASSWORD
+		) VALUES(
+			#{id},
+			#{sex},
+			#{num},
+			#{name},
+			#{password}
+		)
+	</insert>
+	
+	<select id="getStudentByNumAndName" parameterType="userForm" resultType="student">
+		SELECT
 		T.ID,
 		T.NUM,
 		T. NAME,
@@ -165,34 +157,16 @@
 		T.FAMILY_EDUCATION,
 		T.STUDY_TIME,
 		T.ABILITY_ID
-		)
-		VALUES
-		(
-		#{student.id},
-		#{student.num},
-		#{student.name},
-		#{student.password},
-		#{student.college_id},
-		#{student.major_id},
-		#{student.class_id},
-		#{student.sex},
-		#{student.birthday},
-		#{student.qq},
-		#{student.major},
-		#{student.mobile},
-		#{student.address},
-		#{student.people},
-		#{student.family_work},
-		#{student.hoby},
-		#{student.advantage},
-		#{student.specialty},
-		#{student.shortcoming},
-		#{student.photo},
-		#{student.rich_poor},
-		#{student.family_education},
-		#{student.study_time},
-		#{student.ability_id}
-		)
-	</insert>
-
+		FROM
+		T_STUDENT T
+		WHERE
+		1=1
+		<if test="num!=null and num!=''">
+			AND T.NUM=#{num}
+		</if>
+		
+		<if test="name!=null and name!=''">
+			AND T.NAME=#{name}
+		</if>
+	</select>
 </mapper>

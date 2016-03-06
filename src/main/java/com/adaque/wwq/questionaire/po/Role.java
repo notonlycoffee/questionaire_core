@@ -8,7 +8,17 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = -8030446672690316833L;
 	private int id;
 	private String name;
+	private String descrip;
 	
+	
+	public String getDescrip() {
+		return descrip;
+	}
+
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+
 	private List<Privilege> privilegeList = new ArrayList();
 
 	public int getId() {

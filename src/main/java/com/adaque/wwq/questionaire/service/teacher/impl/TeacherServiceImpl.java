@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.teacher.TeacherMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
@@ -45,6 +46,10 @@ public class TeacherServiceImpl implements TeacherService {
 
 	public String getTeacherRoleId(String teacherId) {
 		return teacherMapper.getTeacherRoleId(teacherId);
+	}
+
+	public List<Teacher> getTeacherByNumAndName(UserForm userForm) {
+		return teacherMapper.getTeacherByNumAndName(userForm);
 	}
 	
 }

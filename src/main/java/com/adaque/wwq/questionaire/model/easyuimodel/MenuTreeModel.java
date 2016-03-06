@@ -10,7 +10,7 @@ public class MenuTreeModel implements Serializable {
 	private int id;
 	private int c_id;
 	private String text;
-	private String iconCls="icon-save";
+	private String iconCls="icon-table";
 	private Attribute attributes;
 	private String state="open";
 	private String url;

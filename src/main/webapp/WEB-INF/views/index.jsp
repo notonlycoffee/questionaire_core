@@ -13,11 +13,11 @@
 	<!-- header -->
 	<%-- <div data-options="region:'north',href:'${ctx }/north.xhtml',border:'false'" style="width:100%;height:50px;"></div> --%>
 	<%-- <div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:80px;border-bottom:solid 1px red;overflow:hidden;"></div> --%>
-	<div data-options="region:'north',href:'${ctx }/north.xhtml',border:false" style="height:65px;overflow:hidden;" ></div>
+	<div data-options="region:'north',href:'${pageContext.request.contextPath }/north.xhtml',border:false" style="height:65px;overflow:hidden;" ></div>
 	
 	
 	<!-- west -->
-	<div data-options="region:'west',href:'${ctx }/west.xhtml',border:'false',title:'导航菜单',split:'false'" style="width:180px;height:100%;"></div>
+	<div data-options="region:'west',href:'${pageContext.request.contextPath }/west.xhtml',border:'false',title:'导航菜单',split:'false'" style="width:180px;height:100%;"></div>
 	
 	<!-- center -->
 	<div region="center" data-options="border:'false'">
@@ -31,7 +31,7 @@
 	
 	
 	<!-- footer -->
-	<div data-options="region:'south',href:'${ctx }/south.xhtml',border:'false'" style="width:100%;height:30px;"></div>
+	<div data-options="region:'south',href:'${pageContext.request.contextPath }/south.xhtml',border:'false'" style="width:100%;height:30px;"></div>
 	
 </body>
 <script>
@@ -43,7 +43,7 @@
 				var url = node.attributes.url;
 				
 				if(url && url.length>0) {
-					url = '${ctx}' + url;
+					url = '${pageContext.request.contextPath}' + url;
 					var iframe = "<iframe src='" + (url) + "' frameborder='0' style='border:0;width:100%;height:100%;margin-top:1px;' scrolling=no ></iframe>";
 					currentTab.tabs('add',{
 						title:node.text,
