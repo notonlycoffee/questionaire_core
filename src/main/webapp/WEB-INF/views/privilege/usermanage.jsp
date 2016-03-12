@@ -88,12 +88,22 @@
 	
 	<div id="window_dia">
 		<div class="easyui-layout" data-options="fit:true">
-			<div data-options="region:'west',width:'300',href:'${pageContext.request.contextPath }/usermanage/assignRole.xhtml',split:false" ></div>
-			<div data-options="region:'center',href:'${pageContext.request.contextPath }/usermanage/allPrivilege.xhtml',fit:true" ></div>
+			<div data-options="region:'west',width:'300',split:false" >
+				<table id="roletable"></table>
+			</div>
+			<div data-options="region:'center',fit:true" >
+				<ul id="privilege_tree">
+				</ul>
+			</div>
 		</div>
 	</div>
 	</div>
 	
+	<div id="toolbar" style="display:none;position:relative;" >
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="doUser.addRole();return false;">新增</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-user',plain:true" onclick="doUser.deleteRole();return false;">删除</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-resetpsw',plain:true" onclick="doUser.accreditRole();return false;">授权</a>
+	</div>
 </body>
 <script>
 	var CONTEXT_PATH = '${pageContext.request.contextPath}';

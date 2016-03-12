@@ -8,12 +8,15 @@
 <script>
 	$('#tree_menu').tree({
 		url:'${pageContext.request.contextPath}/getTree.xhtml',
+		onLoadSuccess:function(node,data) {
+		}
 	});
 	
 	$('#tree_menu').tree({
 		onClick: function(node){
 			addTab(node);
-		}
+		},
+	
 	});
 
 
