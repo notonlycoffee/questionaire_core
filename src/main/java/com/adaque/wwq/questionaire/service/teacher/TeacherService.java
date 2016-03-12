@@ -3,6 +3,7 @@ package com.adaque.wwq.questionaire.service.teacher;
 import java.util.List;
 
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 
@@ -22,4 +23,8 @@ public interface TeacherService {
 	public String getTeacherRoleId(String teacherId);
 	
 	public List<Teacher> getTeacherByNumAndName(UserForm userForm);
+	
+	public void addTeacherRole(UserRole userRole);
+	
+	public Teacher getTeacherByNum(String num);
 }

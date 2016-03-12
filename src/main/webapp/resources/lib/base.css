@@ -1,0 +1,52 @@
+/*css reset*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, input, label{margin:0;padding:0;}
+ul li, ol li{list-style:none;}
+body{font:12px/1.5 simsun; color:#333; background:#fff;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+a{text-decoration:none; color:#333;}
+a:hover{text-decoration:none;}
+a, :focus{outline:0;}
+i,b,em,s{font-style:normal; font-weight:normal;}
+textarea{font-size:12px; font-weight:normal;}
+input,select{vertical-align:middle; color:#333;}
+fieldset, img {border:0; vertical-align:middle;}
+button{cursor:pointer;}
+
+/*global common base*/
+.tar{text-align:right !important;}
+.tac{text-align:center !important;}
+.tal{text-align:left !important;}
+.fl{float:left;}
+.fr{float:right;}
+.fn{float:none;}
+.clear{clear:both;}
+.clearfix{zoom:1;}
+.clearfix:after{display:block; content:"."; clear:both; height:0; visibility:hidden;}
+.dn{display:none;}
+.bgn{background:none transparent;}
+.bn{border:none !important;}
+.in2{text-indent:2em;}
+.vam{vertical-align:middle;}
+.por{position:relative;}
+.poa{position:absolute;}
+.fhid{text-indent:-9999px; font-size:0; overflow:hidden; display:block;}
+.disabled{cursor:default; color:#ccc; border-color:#ddd;}
+
+/*base layout*/
+.msbox{position:absolute; border:1px solid #ddd; z-index:10; right:18px; top:100%; display:none;}
+.msbox .formbox{padding:10px; background:#fff;}
+
+/*icon 16-16 */
+.icon-login, .icon-error, .icon-folder, .icon-exfolder, .icon-refail, .icon-repout{background:url(easyui/themes/icons/icon.png) no-repeat; padding-left:20px; display:inline-block; height:16px; line-height:16px; vertical-align:middle;}
+.icon-login{background-position:0 0;}
+.icon-error{background-position:0 -30px; font-weight:bold; color:#b00000;}
+.icon-folder{background-position:0 -59px;}
+.icon-exfolder{background-position:0 -89px;}
+.icon-refail{background-position:0 -120px;}
+.icon-repout{background-position:0 -360px;}
+.icon-submenu{background-position:0 -330px;}
+
+.refail, .resuc{padding:6px 10px; border:1px solid #ffa8a8; color:#b00; background-color:#fff3f3;}
+.resuc{background-color:#ddfdb8; color:#067b06; border-color:#118c11}
+.resuc .icon-ok{background-position: left center; padding-left:20px;}
+.mark{color:#e00;}

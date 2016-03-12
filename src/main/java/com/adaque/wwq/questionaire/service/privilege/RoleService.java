@@ -22,4 +22,6 @@ public interface RoleService {
 	public List<MenuTreeModel> getUserRoleMenu(int roleid);
 
 	public List<MenuTreeModel> getUserRoleLeave(int privilegeid);
+	
+	public Role getRoleByName(String name);
 }

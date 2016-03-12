@@ -50,4 +50,9 @@ public class RoleServiceImpl implements RoleService {
 		return modelList;
 	}
 
+	@Override
+	public Role getRoleByName(String name) {
+		return roleMapper.getRoleByName(name);
+	}
+
 }

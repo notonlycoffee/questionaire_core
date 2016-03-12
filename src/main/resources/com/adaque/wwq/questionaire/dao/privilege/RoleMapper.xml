@@ -18,6 +18,9 @@
 		SELECT ID,NAME,DESCRIP FROM T_ROLE T WHERE T.ID=#{value}
 	</select>
 	
+	<select id="getRoleByName" parameterType="string" resultType="role">
+		SELECT * FROM T_ROLE WHERE NAME=#{value}
+	</select>	
 	<select id="getAllRole" resultType="role">
 		SELECT ID,NAME,DESCRIP FROM T_ROLE
 	</select>

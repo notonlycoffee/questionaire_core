@@ -169,4 +169,13 @@
 			AND T.NAME=#{name}
 		</if>
 	</select>
+	
+	<insert id="addStudentRole" parameterType="userRole">
+		INSERT INTO T_STUDENT_ROLE(STUDENT_ID,ROLE_ID) VALUES('${user_id}','${role_id}')
+	</insert>
+	
+	<select id="getStudentByNum" parameterType="string" resultType="student">
+		SELECT T.ID,T.NUM,T.NAME FROM T_STUDENT T WHERE T.NUM=#{value}
+	</select>
+	
 </mapper>

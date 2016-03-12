@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.PrivilegeMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.po.Privilege;
 import com.adaque.wwq.questionaire.service.privilege.PrivilegeService;
+
+
 
 @Service
 public class PrivilegeServiceImpl implements PrivilegeService {
@@ -36,5 +39,20 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 	public void addPrivilege(Privilege privilege) {
 		privilegeMapper.addPrivilege(privilege);
 	}
+
+	@Override
+	public List<MenuTreeModel> getPrivilegeResourceById(int id) {
+		List<MenuTreeModel> list = privilegeMapper.getPrivilegeResourceById(id);
+		return list;
+	}
+
+	@Override
+	public int getRoleIdByPrivilegeId(int id) {
+		return privilegeMapper.getRoleIdByPrivilegeId(id);
+	}
+
+	
+
+	
 
 }

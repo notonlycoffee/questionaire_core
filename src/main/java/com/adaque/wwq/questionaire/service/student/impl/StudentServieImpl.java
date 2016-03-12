@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.student.StudentMapper;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
@@ -46,6 +47,16 @@ public class StudentServieImpl implements StudentServie {
 	@Override
 	public void addFormStudent(Student student) {
 		studentMapper.addFormStudent(student);
+	}
+
+	@Override
+	public void addStudentRole(UserRole userRole) {
+		studentMapper.addStudentRole(userRole);
+	}
+
+	@Override
+	public Student getStudentByNum(String num) {
+		return studentMapper.getStudentByNum(num);
 	}
 	
 	

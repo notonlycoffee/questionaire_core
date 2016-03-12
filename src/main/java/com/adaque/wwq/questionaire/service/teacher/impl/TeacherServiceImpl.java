@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.teacher.TeacherMapper;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
 import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
@@ -50,6 +51,16 @@ public class TeacherServiceImpl implements TeacherService {
 
 	public List<Teacher> getTeacherByNumAndName(UserForm userForm) {
 		return teacherMapper.getTeacherByNumAndName(userForm);
+	}
+
+	@Override
+	public void addTeacherRole(UserRole userRole) {
+		teacherMapper.addTeacherRole(userRole);
+	}
+
+	@Override
+	public Teacher getTeacherByNum(String num) {
+		return teacherMapper.getTeacherByNum(num);
 	}
 	
 }

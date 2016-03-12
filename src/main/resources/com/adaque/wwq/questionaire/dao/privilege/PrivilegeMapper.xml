@@ -29,6 +29,16 @@
 	
 	
 	
+	<select id="getPrivilegeResourceById" parameterType="int" resultType="menuTreeModel">
+		SELECT B.ID,B.NAME text,B.PRIVILEGE_ID C_ID FROM T_RESOURCE B WHERE B.PRIVILEGE_ID=#{value}
+	</select>
+	
+	
+	<select id="getRoleIdByPrivilegeId" parameterType="int"  resultType="int">
+		SELECT A.ID FROM T_ROLE A, T_PRIVILEGE_ROLE B, T_PRIVILEGE C WHERE A.ID=B.ROLE_ID AND B.FUNCTION_ID=C.ID AND C.ID=#{value}
+	</select>
+	
+	
 	
 	
 </mapper>

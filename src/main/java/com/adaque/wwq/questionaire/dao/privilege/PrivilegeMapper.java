@@ -2,6 +2,7 @@ package com.adaque.wwq.questionaire.dao.privilege;
 
 import java.util.List;
 
+import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.po.Privilege;
 
 public interface PrivilegeMapper {
@@ -16,5 +17,9 @@ public interface PrivilegeMapper {
 	public void deletePrivilegeById(int id);
 	
 	public void addPrivilege(Privilege privilege);
+	
+	public List<MenuTreeModel> getPrivilegeResourceById(int id);
+	
+	public int getRoleIdByPrivilegeId(int id);
 	
 }

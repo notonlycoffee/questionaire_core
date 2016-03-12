@@ -14,14 +14,23 @@ public class MenuTreeModel implements Serializable {
 	private Attribute attributes;
 	private String state="open";
 	private String url;
+	private boolean checked=false;
+	private List<MenuTreeModel> children = new ArrayList();
 	
+	
+	public boolean isChecked() {
+		return checked;
+	}
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
 	public Attribute getAttributes() {
 		return attributes;
 	}
 	public void setAttributes(Attribute attributes) {
 		this.attributes = attributes;
 	}
-	private List<MenuTreeModel> children = new ArrayList();
+	
 	public int getC_id() {
 		return c_id;
 	}

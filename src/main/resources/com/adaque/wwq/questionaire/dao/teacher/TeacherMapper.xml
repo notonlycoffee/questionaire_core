@@ -96,4 +96,17 @@
 	</select>
 	
 	
+	<insert id="addTeacherRole" parameterType="userRole">
+		INSERT INTO T_TEACHER_ROLE (TEACHER_ID, ROLE_TEACHER_ID)
+		VALUES
+			(
+				'${user_id}',
+				'${role_id}'
+			)
+	</insert>
+	
+	<select id="getTeacherByNum" parameterType="string" resultType="teacher">
+		SELECT * FROM T_TEACHER T WHERE T.NUM=#{value}
+	</select>
+	
 </mapper>

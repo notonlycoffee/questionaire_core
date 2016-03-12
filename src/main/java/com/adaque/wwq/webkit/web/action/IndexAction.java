@@ -24,6 +24,7 @@ import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.privilege.RoleService;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
+import com.adaque.wwq.questionaire.utils.MD5Util;
 
 
 @Controller
@@ -55,7 +56,7 @@ public class IndexAction {
 	
 	@RequestMapping(value="login.xhtml")
 	public String login(String username,String password,String userroleid,HttpServletRequest request) {
-		
+		password = MD5Util.string2MD5(password);
 		Object obj = request.getSession().getAttribute("user");
 		if(obj != null) {
 			return "index";
@@ -69,6 +70,7 @@ public class IndexAction {
 			if(role.getName().equals("学生")) {
 				StudentModel studentModel = new StudentModel();
 				studentModel.setUsername(username);
+//				password = MD5Util.string2MD5(password);
 				studentModel.setPassword(password);
 				Student student = studentService.getStduentByNameAndPwd(studentModel);
 				if(student == null) {
@@ -83,6 +85,7 @@ public class IndexAction {
 				TeacherModel teacherModel = new TeacherModel();
 				teacherModel.setPassword(password);
 				teacherModel.setUsername(username);
+//				password = MD5Util.string2MD5(password);
 				Teacher teacher = teacherService.getTeacherByNameAndPassword(teacherModel);
 				if(teacher == null) {
 					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
@@ -158,7 +161,6 @@ public class IndexAction {
 			Student s = (Student) obj;
 			roleList = s.getRoleList();
 		}
-		
 		
 		List<MenuTreeModel> pri_List = null;
 		for(Role role: roleList) {
