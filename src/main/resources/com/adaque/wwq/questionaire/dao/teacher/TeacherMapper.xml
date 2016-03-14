@@ -109,4 +109,8 @@
 		SELECT * FROM T_TEACHER T WHERE T.NUM=#{value}
 	</select>
 	
+	<update id="updatePasswordById" parameterType="userForm">
+		UPDATE T_TEACHER T SET T.PASSWORD=#{password} WHERE T.ID=#{id}
+	</update>
+	
 </mapper>

@@ -27,4 +27,6 @@ public interface TeacherService {
 	public void addTeacherRole(UserRole userRole);
 	
 	public Teacher getTeacherByNum(String num);
+	
+	public void updatePasswordById(UserForm userForm);
 }

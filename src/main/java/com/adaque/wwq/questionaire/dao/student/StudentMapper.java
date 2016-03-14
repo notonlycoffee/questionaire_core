@@ -27,4 +27,5 @@ public interface StudentMapper {
 	
 	public Student getStudentByNum(String num);
 	
+	public void updatePasswordById(UserForm userForm);
 }

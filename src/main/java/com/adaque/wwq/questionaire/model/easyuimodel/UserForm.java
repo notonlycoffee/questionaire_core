@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class UserForm implements Serializable {
 	private static final long serialVersionUID = 1180930364474844963L;
+	private String id;
 	private String num;
 	private String name;
 	private String type; //学生还是老师
@@ -11,6 +12,12 @@ public class UserForm implements Serializable {
 	private String password;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getPassword() {
 		return password;
 	}

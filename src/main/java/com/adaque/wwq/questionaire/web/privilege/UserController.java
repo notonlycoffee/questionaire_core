@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.adaque.wwq.questionaire.model.easyuimodel.Attribute;
 import com.adaque.wwq.questionaire.model.easyuimodel.EasyUIDataGradOutputModel;
 import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
@@ -106,7 +107,6 @@ public class UserController {
 			t.setName(userForm.getName());
 			t.setNum(userForm.getNum());
 			t.setPassword(MD5Util.string2MD5(userForm.getPassword()));
-			t.setPassword(userForm.getPassword());
 			t.setSex(userForm.getSex());
 			t.setId(UUID.randomUUID().toString());
 			switch(userForm.getType()) {
@@ -179,19 +179,25 @@ public class UserController {
 //		List<MenuTreeModel> pre_list = new ArrayList();
 //		pre_list = roleService.getUserRoleMenu(Integer.valueOf(id));
 		
-		List<Privilege> privilegeList = privilegeService.getAllPrivilege();
+		List<Privilege> privilegeList = privilegeService.getAllPrivilege();  //获得所有的权限展示
 		List<MenuTreeModel> menu_list = new ArrayList();
 		for(Privilege p : privilegeList) {
 			MenuTreeModel m = new MenuTreeModel();
 			m.setId(p.getId());
 			m.setText(p.getName());
-			List<MenuTreeModel> children = privilegeService.getPrivilegeResourceById(p.getId());
+			List<MenuTreeModel> children = privilegeService.getPrivilegeResourceById(p.getId());  //这里出现问题
+			
+			for(MenuTreeModel mc : children) {
+				Attribute a = new Attribute();
+				a.setC_id(mc.getC_id());
+				mc.setAttributes(a);
+			}
 			
 			String role_id = String.valueOf(privilegeService.getRoleIdByPrivilegeId(Integer.valueOf(p.getId())));
 			if(role_id.equals(id)) {
 				m.setChecked(true);
 				for(MenuTreeModel mm : children) {
-					mm.setChecked(true);
+					
 				}
 			}
 			m.setChildren(children);
@@ -207,4 +213,33 @@ public class UserController {
 		return menu_list;
 	}
 	
+	@RequestMapping("resetpassword.xhtml")
+	public @ResponseBody ResultMessage resetpassword(UserForm userForm) {
+		ResultMessage message = new ResultMessage();
+		String type = userForm.getType();
+		if("学生".equals(type)) {
+			//是学生
+			Student student = studentService.getStudentById(userForm.getId());
+			if(student == null) {
+				message.setMessage("修改的用户不存在");
+			} else {
+				userForm.setPassword(MD5Util.string2MD5("000000"));
+				studentService.updatePasswordById(userForm);
+				message.setMessage("密码修改成功");
+			}
+		} else {
+			//不是学生
+			Teacher teacher = teacherService.getTeacherById(userForm.getId());
+			if(teacher == null) {
+				message.setMessage("修改的用户不存在");
+			} else {
+				userForm.setPassword(MD5Util.string2MD5("000000"));
+				teacherService.updatePasswordById(userForm);
+				message.setMessage("密码修改成功");
+			}
+		}
+		
+		System.out.println();
+		return null;
+	}
 }

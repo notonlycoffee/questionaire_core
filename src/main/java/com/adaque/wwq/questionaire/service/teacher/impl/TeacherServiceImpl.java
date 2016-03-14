@@ -62,6 +62,11 @@ public class TeacherServiceImpl implements TeacherService {
 	public Teacher getTeacherByNum(String num) {
 		return teacherMapper.getTeacherByNum(num);
 	}
+
+	@Override
+	public void updatePasswordById(UserForm userForm) {
+		teacherMapper.updatePasswordById(userForm);
+	}
 	
 }
  

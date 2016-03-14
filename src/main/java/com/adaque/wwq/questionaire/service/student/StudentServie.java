@@ -27,4 +27,6 @@ public Student getStudentById(String id);
 	
 	public Student getStudentByNum(String num);
 	
+	public void updatePasswordById(UserForm userForm);
+	
 }

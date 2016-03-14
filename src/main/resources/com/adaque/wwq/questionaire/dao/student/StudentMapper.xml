@@ -178,4 +178,9 @@
 		SELECT T.ID,T.NUM,T.NAME FROM T_STUDENT T WHERE T.NUM=#{value}
 	</select>
 	
+	
+	<update id="updatePasswordById" parameterType="userForm">
+		UPDATE T_STUDENT T SET T.PASSWORD=#{password} WHERE T.ID=#{id}
+	</update>
+	
 </mapper>

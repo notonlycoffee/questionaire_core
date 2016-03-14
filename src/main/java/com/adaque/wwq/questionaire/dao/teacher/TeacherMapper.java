@@ -28,4 +28,6 @@ public interface TeacherMapper {
 	public void addTeacherRole(UserRole userRole);
 	
 	public Teacher getTeacherByNum(String num);
+	
+	public void updatePasswordById(UserForm userForm);
 }

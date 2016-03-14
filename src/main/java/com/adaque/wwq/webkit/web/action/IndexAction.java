@@ -56,7 +56,7 @@ public class IndexAction {
 	
 	@RequestMapping(value="login.xhtml")
 	public String login(String username,String password,String userroleid,HttpServletRequest request) {
-		password = MD5Util.string2MD5(password);
+		
 		Object obj = request.getSession().getAttribute("user");
 		if(obj != null) {
 			return "index";
@@ -70,7 +70,7 @@ public class IndexAction {
 			if(role.getName().equals("学生")) {
 				StudentModel studentModel = new StudentModel();
 				studentModel.setUsername(username);
-//				password = MD5Util.string2MD5(password);
+				password = MD5Util.string2MD5(password);  //设置密码加密
 				studentModel.setPassword(password);
 				Student student = studentService.getStduentByNameAndPwd(studentModel);
 				if(student == null) {
@@ -83,9 +83,9 @@ public class IndexAction {
 				}
 			} else {
 				TeacherModel teacherModel = new TeacherModel();
+				password = MD5Util.string2MD5(password);  //设置密码加密
 				teacherModel.setPassword(password);
 				teacherModel.setUsername(username);
-//				password = MD5Util.string2MD5(password);
 				Teacher teacher = teacherService.getTeacherByNameAndPassword(teacherModel);
 				if(teacher == null) {
 					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
@@ -167,12 +167,16 @@ public class IndexAction {
 			pri_List = roleService.getUserRoleMenu(role.getId());
 			System.out.println();
 			for(MenuTreeModel pri: pri_List) {
+				
+				//3月13 这里是全部的资源,但是需要过滤出用户实际的资源
 				List<MenuTreeModel> resour_list = roleService.getUserRoleLeave(pri.getId());
+				
 				for(MenuTreeModel model : resour_list) {
 					Attribute attribute = new Attribute();
 					attribute.setUrl(model.getUrl());
 					model.setAttributes(attribute);
 				}
+				
 				pri.getChildren().addAll(resour_list);
 				System.out.println();
 			}

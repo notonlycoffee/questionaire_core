@@ -34,7 +34,7 @@
 	
 	<div id="extToolbar" style="display:none;position:relative;" >
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="doUser.toAdd();return false;">新增用户</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-user',plain:true" onclick="doUser.toRole();return false;">分配角色</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-user',plain:true" onclick="doUser.toRole();return false;">分配角色权限</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-resetpsw',plain:true" onclick="doUser.resetPwd();return false;">重置密码</a>
 	</div>
 	</div>
@@ -98,6 +98,8 @@
 		</div>
 	</div>
 	</div>
+	
+	<div id="resetpassword"></div>
 	
 	<div id="toolbar" style="display:none;position:relative;" >
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="doUser.addRole();return false;">新增</a>

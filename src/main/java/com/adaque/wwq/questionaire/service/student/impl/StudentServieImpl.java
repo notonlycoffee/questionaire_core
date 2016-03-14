@@ -58,6 +58,11 @@ public class StudentServieImpl implements StudentServie {
 	public Student getStudentByNum(String num) {
 		return studentMapper.getStudentByNum(num);
 	}
+
+	@Override
+	public void updatePasswordById(UserForm userForm) {
+		studentMapper.updatePasswordById(userForm);
+	}
 	
 	
 	

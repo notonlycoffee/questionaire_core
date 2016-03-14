@@ -1,18 +1,35 @@
 var doUser = {
 		url : CONTEXT_PATH+'/usermanage',
-		
-		toRole:function() {
-			
+		resetPwd:function() {
 			var row = $('#dg').datagrid('getSelected');
 			if (!row) {
 				parent.showWarningBox('请先选择一个用户');
 				return;
 			} else {
+				$.messager.confirm('重置密码', '是否重置密码为000000?', function(r){
+					if (r){
+						$.ajax({
+							url:CONTEXT_PATH + '/usermanage/resetpassword.xhtml',
+							type:"post",
+							data:{'num':row.num,'name':row.name,'type':row.type,'sex':row.sex,'id':row.id},
+							success:function(data) {
+								console.log(data);
+							}
+						});
+						
+					}
+				});
+			}
+			
+			
+		},
+		toRole:function() {
+			
 				$('#window_dia').window({
 					width:800,
 					height:500,
 					modal:true,
-					title:'用户授权',
+					title:'角色分配',
 					minimizable:false,
 					maximizable:false,
 					collapsible:false,
@@ -22,8 +39,6 @@ var doUser = {
 				var result_id = null;
 				selector==null?result_id='2222':result_id=selector.id;
 				privilege_tree_fu(result_id);
-			}
-			
 			
 		},
 		toAdd : function() {
@@ -67,7 +82,12 @@ var doUser = {
 							$('#user_num').val("");
 							$('#user_name').val("");
 							$('#dg').datagrid('reload');
-							$('#contain_add_user').hide();
+							
+							if(data.message.indexOf("成功") > 0) {
+								$('#contain_add_user').hide();
+							}
+							alert(data.message);
+							
 						}
 					});
 				} else {
@@ -92,7 +112,11 @@ var doUser = {
 		},
 		accreditRole:function() {
 			//授权角色功能模块
-			alert("acc");
+			var role = $('#roletable').datagrid('getSelected');
+			var tree_node = $('#privilege_tree').tree('getChecked');
+			console.log(role);
+			console.log("bbb");
+			console.log(tree_node);
 		}
 		
 		
@@ -130,7 +154,7 @@ $(function() {
 		},{
 			field : 'type',
 			width : 100,
-			title : '类型',
+			title : '角色',
 			formatter:function(value,row,index) {
 				var type = row.type;
 				if(typeof(type) == 'undefined' ) {
