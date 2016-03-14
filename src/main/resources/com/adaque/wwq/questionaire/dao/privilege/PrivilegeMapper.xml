@@ -23,14 +23,14 @@
 	</delete>
 	
 	<insert id="addPrivilege" parameterType="privilege">
-		INSERT INTO T_PRIVILEGE(ID,NAME) VALUES(#{privilege.id},#{privilege.name})
+		INSERT INTO T_PRIVILEGE(ID,NAME) VALUES(#{id},#{name})
 	</insert>
 	
 	
 	
 	
 	<select id="getPrivilegeResourceById" parameterType="int" resultType="menuTreeModel">
-		SELECT B.ID,B.NAME text,B.PRIVILEGE_ID C_ID FROM T_RESOURCE B WHERE B.PRIVILEGE_ID=#{value}
+		SELECT B.ID,B.NAME text,B.PRIVILEGE_ID C_ID,B.PATH URL FROM T_RESOURCE B WHERE B.PRIVILEGE_ID=#{value}
 	</select>
 	
 	
@@ -39,6 +39,9 @@
 	</select>
 	
 	
+	<select id="getMaxId" resultType="int">
+		SELECT MAX(ID) FROM T_PRIVILEGE
+	</select>
 	
 	
 </mapper>

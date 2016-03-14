@@ -95,4 +95,31 @@
 	</select>
 	
 	
+	
+	<select id="getRoleResourceByRoleId" parameterType="int" resultType="menuTreeModel">
+		SELECT
+			B.ID ID,
+			B. NAME TEXT,
+			B.PATH URL,
+			B.PRIVILEGE_ID C_ID
+		FROM
+			T_ROLE A,
+			T_RESOURCE B,
+			T_ROLE_RESOURCE C
+		WHERE
+			A.ID = C.ROLE_ID
+		AND B.ID = C.RESOURCE_ID
+		AND A.ID = #{value}
+	</select>
+	
+	
+	<delete id="deleteRoleResource" parameterType="int">
+		DELETE FROM T_ROLE_RESOURCE WHERE ROLE_ID=#{value}
+	</delete>
+	
+	<insert id="addRoleResourceByBothId" parameterType="userRole">
+		INSERT INTO T_ROLE_RESOURCE(ROLE_ID,RESOURCE_ID) VALUES(#{role_id},#{resource_id})
+	</insert>
+	
+	
 </mapper>

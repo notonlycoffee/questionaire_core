@@ -27,7 +27,24 @@
 	</delete>
 	
 	<insert id="addResource" parameterType="resource">
-		INSERT INTO T_RESOURCE(ID,NAME,PRIVILEGE_ID,PATH) VALUES(#{resource.id},#{resource.name},#{resource.privilege_id},#{resource.path})
+		INSERT INTO T_RESOURCE(ID,NAME,PRIVILEGE_ID,PATH) VALUES(#{id},#{name},#{privilege.id},#{path})
 	</insert>
+	
+	<select id="getPrivilegeByResourceId" parameterType="userRole" resultType="menuTreeModel">
+		SELECT
+			B.ID,
+			B. NAME TEXT
+		FROM
+			T_RESOURCE A,
+			T_PRIVILEGE B
+		WHERE
+			B.ID = A.PRIVILEGE_ID
+		AND A.PRIVILEGE_ID = #{privilege_id}
+		AND A.ID = #{resource_id}
+	</select>
+	
+	<select id="getMaxid" resultType="int">
+		SELECT MAX(ID) FROM T_RESOURCE 
+	</select>
 	
 </mapper>
