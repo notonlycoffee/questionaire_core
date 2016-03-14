@@ -51,6 +51,11 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 		return privilegeMapper.getRoleIdByPrivilegeId(id);
 	}
 
+	@Override
+	public int getMaxId() {
+		return privilegeMapper.getMaxId();
+	}
+
 	
 
 	

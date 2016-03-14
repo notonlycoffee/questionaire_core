@@ -13,7 +13,7 @@ var doUser = {
 							type:"post",
 							data:{'num':row.num,'name':row.name,'type':row.type,'sex':row.sex,'id':row.id},
 							success:function(data) {
-								console.log(data);
+								alert(data.message);
 							}
 						});
 						

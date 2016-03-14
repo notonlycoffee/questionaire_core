@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.RoleMapper;
 import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.privilege.QueryPrivilegeModel;
 import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.service.privilege.RoleService;
@@ -53,6 +54,22 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role getRoleByName(String name) {
 		return roleMapper.getRoleByName(name);
+	}
+
+	@Override
+	public List<MenuTreeModel> getRoleResourceByRoleId(int id) {
+		return roleMapper.getRoleResourceByRoleId(id);
+	}
+
+	@Override
+	public void deleteRoleResource(int id) {
+		roleMapper.deleteRoleResource(id);
+		
+	}
+
+	@Override
+	public void addRoleResourceByBothId(UserRole userRole) {
+		roleMapper.addRoleResourceByBothId(userRole);
 	}
 
 }

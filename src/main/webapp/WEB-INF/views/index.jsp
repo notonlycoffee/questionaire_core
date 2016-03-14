@@ -17,7 +17,7 @@
 	
 	
 	<!-- west -->
-	<div data-options="region:'west',href:'${pageContext.request.contextPath }/west.xhtml',border:'false',title:'导航菜单',split:'false'" style="width:180px;height:100%;"></div>
+	<div data-options="region:'west',href:'${pageContext.request.contextPath }/west.xhtml',border:'false',title:'导航菜单',split:false" style="width:180px;height:100%;overflow:scroll"></div>
 	
 	<!-- center -->
 	<div region="center" data-options="border:'false'">

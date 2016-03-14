@@ -20,4 +20,6 @@ public interface PrivilegeService {
 	public List<MenuTreeModel> getPrivilegeResourceById(int id);
 	
 	public int getRoleIdByPrivilegeId(int id);
+	
+	public int getMaxId();
 }

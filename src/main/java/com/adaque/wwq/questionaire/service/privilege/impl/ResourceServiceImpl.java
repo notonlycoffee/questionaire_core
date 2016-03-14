@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.privilege.ResourceMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
+import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.po.Resource;
 import com.adaque.wwq.questionaire.service.privilege.ResourceService;
 
@@ -56,6 +58,16 @@ public class ResourceServiceImpl implements ResourceService {
 	public void deleteResourceById(String id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MenuTreeModel getPrivilegeByResourceId(UserRole userRole) {
+		return resourceMapper.getPrivilegeByResourceId(userRole);
+	}
+
+	@Override
+	public int getMaxid() {
+		return resourceMapper.getMaxid();
 	}
 
 }

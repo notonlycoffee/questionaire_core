@@ -91,7 +91,7 @@
 			<div data-options="region:'west',width:'300',split:false" >
 				<table id="roletable"></table>
 			</div>
-			<div data-options="region:'center',fit:true" >
+			<div data-options="region:'center',fit:true" style="overflow:scroll" >
 				<ul id="privilege_tree">
 				</ul>
 			</div>

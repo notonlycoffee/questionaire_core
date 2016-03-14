@@ -22,4 +22,6 @@ public interface PrivilegeMapper {
 	
 	public int getRoleIdByPrivilegeId(int id);
 	
+	public int getMaxId();
+	
 }

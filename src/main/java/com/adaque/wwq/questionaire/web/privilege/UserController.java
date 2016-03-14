@@ -21,6 +21,7 @@ import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.po.Teacher;
 import com.adaque.wwq.questionaire.service.privilege.PrivilegeService;
+import com.adaque.wwq.questionaire.service.privilege.ResourceService;
 import com.adaque.wwq.questionaire.service.privilege.RoleService;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
 import com.adaque.wwq.questionaire.service.teacher.TeacherService;
@@ -40,6 +41,9 @@ public class UserController {
 	
 	@Autowired
 	private PrivilegeService privilegeService;
+	
+	@Autowired
+	private ResourceService resourceService;
 	
 	@RequestMapping(value="getUser.xhtml")
 	public @ResponseBody EasyUIDataGradOutputModel getUser(UserForm userForm) {
@@ -176,41 +180,72 @@ public class UserController {
 	
 	@RequestMapping("getRolePrivilege2assign.xhtml")
 	public @ResponseBody List getRolePrivilege2assign(String id) {
-//		List<MenuTreeModel> pre_list = new ArrayList();
-//		pre_list = roleService.getUserRoleMenu(Integer.valueOf(id));
 		
-		List<Privilege> privilegeList = privilegeService.getAllPrivilege();  //获得所有的权限展示
-		List<MenuTreeModel> menu_list = new ArrayList();
-		for(Privilege p : privilegeList) {
+//		List<MenuTreeModel> resourceList = roleService.getRoleResourceByRoleId(Integer.valueOf(id)); //获取所有的资源
+//		for(MenuTreeModel remcheck: resourceList) {
+//			remcheck.setChecked(true);
+//		}
+//		List<MenuTreeModel> privilegeList = new ArrayList(); //总的目录 
+//		
+//		for(MenuTreeModel rem : resourceList) { //遍历所有的资源文件,获得权限目录,将资源添加到权限目录中,最后返回整个权限目录
+//			
+//			UserRole userRole = new UserRole();
+//			userRole.setResource_id(rem.getId());
+//			userRole.setPrivilege_id(rem.getC_id());
+//			MenuTreeModel privilege_menu = resourceService.getPrivilegeByResourceId(userRole);
+//			
+//			if(privilegeList.contains(privilege_menu)) {
+//				//当前的list已经拥有这个权限目录,则直接将该资源加入到这个权限目录下面
+//				for(MenuTreeModel pri_m: privilegeList) {
+//					if(pri_m.equals(privilege_menu)) {
+//						pri_m.getChildren().add(rem);
+//					}
+//				}
+//			} else {
+//				//当前list没有这个权限目录,则先将该资源加入到权限目录,再将权限目录加入到list中
+//				privilege_menu.getChildren().add(rem);
+//				privilegeList.add(privilege_menu);
+//				
+//			}
+//		}
+		
+		List<Privilege> pri_list = privilegeService.getAllPrivilege();
+		List<MenuTreeModel> pri_menu_list = new ArrayList();
+		for(Privilege p : pri_list) {
 			MenuTreeModel m = new MenuTreeModel();
 			m.setId(p.getId());
 			m.setText(p.getName());
-			List<MenuTreeModel> children = privilegeService.getPrivilegeResourceById(p.getId());  //这里出现问题
-			
-			for(MenuTreeModel mc : children) {
+			List<MenuTreeModel> resource_menu_list = privilegeService.getPrivilegeResourceById(p.getId());
+			for(MenuTreeModel remre : resource_menu_list) {
 				Attribute a = new Attribute();
-				a.setC_id(mc.getC_id());
-				mc.setAttributes(a);
+				a.setUrl(remre.getUrl());
+				remre.setAttributes(a);
 			}
-			
-			String role_id = String.valueOf(privilegeService.getRoleIdByPrivilegeId(Integer.valueOf(p.getId())));
-			if(role_id.equals(id)) {
-				m.setChecked(true);
-				for(MenuTreeModel mm : children) {
-					
-				}
-			}
-			m.setChildren(children);
-			menu_list.add(m);
-			
-			System.out.println();
+			m.getChildren().addAll(resource_menu_list);
+			pri_menu_list.add(m);
 		}
 		
+		List<MenuTreeModel> role_resource_list = roleService.getRoleResourceByRoleId(Integer.valueOf(id));
 		
-		
+		for(MenuTreeModel prim : pri_menu_list) {
+			//遍历一个权限目录
+			for(MenuTreeModel role_re: role_resource_list) {
+				//遍历角色资源
+				if(prim.getChildren().contains(role_re)) {
+					//如果权限目录下面含有这个角色资源
+					for(MenuTreeModel mm: prim.getChildren()) {
+						//找到这个资源,设置为checked
+						if(mm.equals(role_re)) {
+							mm.setChecked(true);
+						}
+					}
+				}
+			}
+		}
+//		
 		
 		System.out.println();
-		return menu_list;
+		return pri_menu_list;
 	}
 	
 	@RequestMapping("resetpassword.xhtml")

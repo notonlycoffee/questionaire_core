@@ -20,7 +20,7 @@ public class Student implements Serializable {
 	private String majorstr;
 	private String mobile;
 	private String address;
-	private int people;
+	private String people;
 	private String family_work;
 	private String hoby;
 	private String advantage;
@@ -130,10 +130,10 @@ public class Student implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPeople() {
+	public String getPeople() {
 		return people;
 	}
-	public void setPeople(int people) {
+	public void setPeople(String people) {
 		this.people = people;
 	}
 	public String getFamily_work() {
