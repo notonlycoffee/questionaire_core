@@ -18,6 +18,7 @@ import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
 import com.adaque.wwq.questionaire.model.teacher.TeacherModel;
+import com.adaque.wwq.questionaire.po.Ability;
 import com.adaque.wwq.questionaire.po.Role;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.po.Teacher;
@@ -77,12 +78,20 @@ public class IndexAction {
 				password = MD5Util.string2MD5(password);  //设置密码加密
 				studentModel.setPassword(password);
 				Student student = studentService.getStduentByNameAndPwd(studentModel);
+				
+				String ability_id = student.getAbility_id();
+				
+				Ability ability = studentService.getStudentAbilityByAbilityId(ability_id);
+				
+				System.out.println();
+				
 				if(student == null) {
 					request.setAttribute("errormessage", "帐户名或密码出错,请重新输入");
 					return "/login";
 				} else {
 					student.getRoleList().add(role);
 					request.getSession().setAttribute("user", student);
+					request.getSession().setAttribute("ability", ability);
 					return "/index";
 				}
 			} else {

@@ -5,6 +5,7 @@ import java.util.List;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
+import com.adaque.wwq.questionaire.po.Ability;
 import com.adaque.wwq.questionaire.po.Student;
 
 public interface StudentMapper {
@@ -28,4 +29,13 @@ public interface StudentMapper {
 	public Student getStudentByNum(String num);
 	
 	public void updatePasswordById(UserForm userForm);
+	
+	
+	public void updateStudentInfoById(Student student);
+	
+	public void addAbilityByStudentId(Ability ability);
+	
+	public void updateAbilityByAbilityId(Ability ability);
+	
+	public Ability getStudentAbilityByAbilityId(String id);
 }

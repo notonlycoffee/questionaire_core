@@ -6,16 +6,16 @@ public class Ability implements Serializable {
 	private static final long serialVersionUID = -7173533151480806248L;
 	
 	private String id;
-	private String score;
-	private String major_ability;
-	private String foreign_language;
-	private String other_ysl;
-	private String reward;
-	private String rgpzxy;
-	private String sxjktj;
-	private String gtjjnl;
-	private String wthdnl;
-	private String other_rsl;
+	private String score;  //学业成绩
+	private String major_ability;  //专业技能能力
+	private String foreign_language;//外语能力
+	private String other_ysl;//其他能力(硬实力)
+	private String reward;//获奖情况
+	private String rgpzxy;//人格品质修养
+	private String sxjktj;//身心健康调节
+	private String gtjjnl;//沟通交际能力
+	private String wthdnl;//文体活动能力
+	private String other_rsl;//其他能力(软实力)
 	private Student student;
 	public String getId() {
 		return id;

@@ -29,11 +29,19 @@ public class Student implements Serializable {
 	private String photo;
 	private String rich_poor;
 	private String family_education;
+	private String ability_id;
 	private Date study_time;
 	private Ability ability;
 	private List<Message> messageList = new ArrayList();
 	private List<Role> roleList = new ArrayList();
 	private List<Answer> answerList = new ArrayList();
+	
+	public String getAbility_id() {
+		return ability_id;
+	}
+	public void setAbility_id(String ability_id) {
+		this.ability_id = ability_id;
+	}
 	public List<Answer> getAnswerList() {
 		return answerList;
 	}

@@ -15,6 +15,7 @@ import com.adaque.wwq.questionaire.model.easyuimodel.EasyUIDataGradOutputModel;
 import com.adaque.wwq.questionaire.model.easyuimodel.MenuTreeModel;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
+import com.adaque.wwq.questionaire.po.Ability;
 import com.adaque.wwq.questionaire.po.Privilege;
 import com.adaque.wwq.questionaire.po.ResultMessage;
 import com.adaque.wwq.questionaire.po.Role;
@@ -138,12 +139,19 @@ public class UserController {
 			} else if(already_student != null) {
 				message.setMessage("您添加的学号已经存在");
 			} else {
+				Ability a = new Ability();
+				a.setId(UUID.randomUUID().toString());
 				Student s = new Student();
+				s.setAbility(a);
+				s.setId(UUID.randomUUID().toString());
+				studentService.addAbilityByStudentId(a);
+				
+				s.setAbility_id(a.getId());
 				s.setName(userForm.getName());
 				s.setNum(userForm.getNum());
 				s.setPassword(MD5Util.string2MD5(userForm.getPassword()));
 				s.setSex(userForm.getSex());
-				s.setId(UUID.randomUUID().toString());
+				
 				studentService.addFormStudent(s);
 				Role role = roleService.getRoleByName(userForm.getType());
 				UserRole userRole = new UserRole();

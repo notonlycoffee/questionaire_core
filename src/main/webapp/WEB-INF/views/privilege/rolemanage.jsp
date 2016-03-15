@@ -99,8 +99,6 @@ function accreditRole() {
 		}
 	})
 	
-	console.log(resource_ids);
-	
 	  $.ajax({
 		url:base_path+'/rolemanager/assignRole.xhtml',
 		data:{
@@ -109,7 +107,7 @@ function accreditRole() {
 			},
 		type:'post',
 		success:function(data) {
-			
+			alert(data.message);
 		}
 	})  
 	

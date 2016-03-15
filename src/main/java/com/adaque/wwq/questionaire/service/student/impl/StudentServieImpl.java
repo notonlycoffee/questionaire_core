@@ -9,6 +9,7 @@ import com.adaque.wwq.questionaire.dao.student.StudentMapper;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserForm;
 import com.adaque.wwq.questionaire.model.easyuimodel.UserRole;
 import com.adaque.wwq.questionaire.model.student.StudentModel;
+import com.adaque.wwq.questionaire.po.Ability;
 import com.adaque.wwq.questionaire.po.Student;
 import com.adaque.wwq.questionaire.service.student.StudentServie;
 @Service
@@ -62,6 +63,27 @@ public class StudentServieImpl implements StudentServie {
 	@Override
 	public void updatePasswordById(UserForm userForm) {
 		studentMapper.updatePasswordById(userForm);
+	}
+
+	@Override
+	public void updateStudentInfoById(Student student) {
+		studentMapper.updateStudentInfoById(student);
+		
+	}
+
+	@Override
+	public void addAbilityByStudentId(Ability ability) {
+		studentMapper.addAbilityByStudentId(ability);
+	}
+
+	@Override
+	public void updateAbilityByAbilityId(Ability ability) {
+		studentMapper.updateAbilityByAbilityId(ability);
+	}
+
+	@Override
+	public Ability getStudentAbilityByAbilityId(String id) {
+		return studentMapper.getStudentAbilityByAbilityId(id);
 	}
 	
 	

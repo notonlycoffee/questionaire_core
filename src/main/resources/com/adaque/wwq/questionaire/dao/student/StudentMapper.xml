@@ -10,8 +10,8 @@
 		SELECT
 		T.ID,
 		T.NUM,
-		T. NAME,
-		T. PASSWORD,
+		T.NAME,
+		T.PASSWORD,
 		T.COLLEGE_ID,
 		T.MAJOR_ID,
 		T.CLASS_ID,
@@ -43,15 +43,15 @@
 		SELECT
 		T.ID,
 		T.NUM,
-		T. NAME,
-		T. PASSWORD,
+		T.NAME,
+		T.PASSWORD,
 		T.COLLEGE_ID,
 		T.MAJOR_ID,
 		T.CLASS_ID,
 		T.SEX,
 		T.BIRTHDAY,
 		T.QQ,
-		T.MAJOR,
+		T.MAJOR majorstr,
 		T.MOBILE,
 		T.ADDRESS,
 		T.PEOPLE,
@@ -121,13 +121,15 @@
 			SEX,
 			NUM,
 			NAME,
-			PASSWORD
+			PASSWORD,
+			ABILITY_ID
 		) VALUES(
 			#{id},
 			#{sex},
 			#{num},
 			#{name},
-			#{password}
+			#{password},
+			#{ability_id}
 		)
 	</insert>
 	
@@ -182,5 +184,60 @@
 	<update id="updatePasswordById" parameterType="userForm">
 		UPDATE T_STUDENT T SET T.PASSWORD=#{password} WHERE T.ID=#{id}
 	</update>
+	
+	<update id="updateStudentInfoById" parameterType="student">
+		UPDATE T_STUDENT T SET 
+			T.QQ=#{qq},
+			T.MAJOR=#{majorstr},
+			T.MOBILE=#{mobile},
+			T.ADDRESS=#{address},
+			T.RICH_POOR=#{rich_poor},
+			T.PEOPLE=#{people},
+			T.FAMILY_EDUCATION=#{family_education},
+			T.FAMILY_WORK=#{family_work},
+			T.HOBY=#{hoby},
+			T.ADVANTAGE=#{advantage},
+			T.SPECIALTY=#{specialty},
+			T.SHORTCOMING=#{shortcoming}
+			WHERE T.ID=#{id}
+	</update>
+	
+	<insert id="addAbilityByStudentId" parameterType="ability">
+		INSERT INTO T_ABILITY (
+			id,
+			score,
+			major_ability,
+			foreign_language,
+			other_ysl,
+			reward,
+			rgpzxy,
+			sxjktj,
+			gtjjnl,
+			wthdnl,
+			other_rsl
+		)
+		VALUES
+			(#{id},#{score},#{major_ability},#{foreign_language},#{other_ysl},#{reward},#{rgpzxy},#{sxjktj},#{gtjjnl},#{wthdnl},#{other_rsl})
+	</insert>
+	
+	<update id="updateAbilityByAbilityId" parameterType="ability">
+		update t_ability set
+		score=#{score},
+		major_ability=#{major_ability},
+		foreign_language=#{foreign_language},
+		other_ysl=#{other_ysl},
+		reward=#{reward},
+		rgpzxy=#{rgpzxy},
+		sxjktj=#{sxjktj},
+		gtjjnl=#{gtjjnl},
+		wthdnl=#{wthdnl},
+		other_rsl=#{other_rsl}
+		where id=#{id}
+	</update>
+	
+	
+	<select id="getStudentAbilityByAbilityId" parameterType="string" resultType="ability">
+		select * from t_ability where id=#{value}
+	</select>
 	
 </mapper>
