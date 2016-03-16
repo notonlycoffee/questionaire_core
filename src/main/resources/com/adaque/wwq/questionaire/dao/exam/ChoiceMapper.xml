@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaque.wwq.questionaire.dao.exam.ChoiceMapper">
+	
+	<insert id="addChoice" parameterType="choice">
+		INSERT INTO T_CHOICE (
+			ID,
+			QUESTION,
+			`SELECT`,
+			QUESTION_TYPE
+		)
+		VALUES
+			(#{id},#{question},#{select},#{question_type})
+	</insert>
+	
+	<select id="getAllChoice" resultType="choice">
+		SELECT * FROM T_CHOICE
+	</select>
+	
+	<delete id="deleteChoiceById" parameterType="string">
+		DELETE FROM T_CHOICE WHERE ID=#{value}
+	</delete>
+	
+</mapper>

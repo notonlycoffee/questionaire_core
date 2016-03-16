@@ -12,6 +12,28 @@ public class Exam implements Serializable{
 	private List<Answer> answerList = new ArrayList();
 	private List<Question> questionList = new ArrayList();
 	private List<Choice> choiceList = new ArrayList();
+	private String name;
+	private String author;
+	private String exam_identity;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getExam_identity() {
+		return exam_identity;
+	}
+	public void setExam_identity(String exam_identity) {
+		this.exam_identity = exam_identity;
+	}
 	public String getId() {
 		return id;
 	}

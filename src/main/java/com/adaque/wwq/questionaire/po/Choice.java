@@ -7,7 +7,7 @@ public class Choice implements Serializable{
 	private String id;
 	private String question;
 	private String select;
-	private int question_type;
+	private String question_type;
 	public String getId() {
 		return id;
 	}
@@ -26,10 +26,10 @@ public class Choice implements Serializable{
 	public void setSelect(String select) {
 		this.select = select;
 	}
-	public int getQuestion_type() {
+	public String getQuestion_type() {
 		return question_type;
 	}
-	public void setQuestion_type(int question_type) {
+	public void setQuestion_type(String question_type) {
 		this.question_type = question_type;
 	}
 	
