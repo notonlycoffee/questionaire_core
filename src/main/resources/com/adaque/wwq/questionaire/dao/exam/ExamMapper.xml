@@ -4,6 +4,28 @@
 
 <mapper namespace="com.adaque.wwq.questionaire.dao.exam.ExamMapper">
 	
+	<resultMap type="exam_plan" id="getAllExamPlanResultMap">
+		<id column="id" property="id" />
+		<result column="closetime" property="closetime"/>	
+		<result column="publishtime" property="publishtime"/>	
+		<result column="teacher_id" property="teacher_id"/>	
+		<result column="name" property="name"/>	
+		<result column="exam_id" property="exam_id"/>
+		
+		<association property="exam" javaType="exam">
+			<id column="exam_id" property="id" />
+			<result column="exam_name" property="name"/>
+			<result column="author" property="author"/>
+			<result column="exam_identity" property="exam_identity"/>
+		</association>
+		
+		<association property="teacher" javaType="teacher">
+			<id column="teacher_id" property="id" />
+			<result column="teacher_name" property="name"/>
+			<result column="num" property="num"/>
+		</association>
+	</resultMap>
+	
 	<select id="getAllExam" resultType="exam">
 		SELECT * FROM T_EXAM
 	</select>	
@@ -11,4 +33,49 @@
 	<delete id="deleteExamById" parameterType="string">
 		DELETE FROM T_EXAM WHERE ID=#{value}
 	</delete>
+	
+	<insert id="addExam" parameterType="exam">
+		INSERT INTO T_EXAM(ID,TYPE,NAME,AUTHOR,EXAM_IDENTITY,CREATETIME)
+		VALUES(#{id},#{type},#{name},#{author},#{exam_identity},now())
+	</insert>
+	
+	<insert id="addExamQuestionTable" parameterType="examPo">
+		INSERT INTO T_EXAM_MIDDLE(EXAM_ID,CHOICE_ID) VALUES(#{exam_id},#{choice_id})
+	</insert>
+	
+	
+	<select id="getAllQuestion" resultType="question">
+		SELECT * FROM T_ANSWER_QUESTION
+	</select>
+	
+	<insert id="addQuestion2Exam" parameterType="examPo">
+		INSERT INTO T_EXAM_QUESTION(EXAM_ID,QUESTION_ID) VALUES(#{exam_id},#{question_id})
+	</insert>
+	
+	<delete id="deleteQuestion2Exam" parameterType="string">
+		DELETE FROM T_EXAM_QUESTION WHERE EXAM_ID=#{value}
+	</delete>
+	
+	<delete id="deleteChoice2Exam" parameterType="string">
+		DELETE FROM T_EXAM_MIDDLE WHERE EXAM_ID=#{value}
+	</delete>
+	
+	<select id="getAllExamPlan" resultMap="getAllExamPlanResultMap">
+		SELECT
+			a.*, 
+			b.NAME exam_name,
+			b.exam_identity,
+			c.id,
+			c.num,
+			c.NAME teacher_name
+		FROM
+			t_exam_plan a,
+			t_exam b,
+			t_teacher c
+		WHERE
+			a.exam_id = b.id
+		AND c.id = a.teacher_id
+	</select>
+	
+	
 </mapper>

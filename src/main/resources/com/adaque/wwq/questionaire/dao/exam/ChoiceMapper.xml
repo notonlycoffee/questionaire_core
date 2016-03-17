@@ -19,8 +19,13 @@
 		SELECT * FROM T_CHOICE
 	</select>
 	
-	<delete id="deleteChoiceById" parameterType="string">
+	<delete id="deleteChoiceById" parameterType="string" >
 		DELETE FROM T_CHOICE WHERE ID=#{value}
 	</delete>
+	
+	
+	<select id="getChoiceByQuestionType" parameterType="string" resultType="choice">
+		SELECT * FROM T_CHOICE WHERE QUESTION_TYPE=#{value}
+	</select>
 	
 </mapper>

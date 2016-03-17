@@ -11,5 +11,7 @@ public interface ChoiceService {
 	public List<Choice> getAllChoice();
 	
 	public void deleteChoiceById(String id);
+	
+	public List getChoiceByQuestionType(String type);
 
 }

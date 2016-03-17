@@ -27,7 +27,7 @@
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="checkeexam();return false;">查看详细试卷</a>
 	</div>
 	
-	<div id="exam_detail" style="overflow:scroll">
+	<div id="exam_detail">
 	
 	</div>
 	

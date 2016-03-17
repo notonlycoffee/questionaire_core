@@ -12,4 +12,6 @@ public interface ChoiceMapper {
 	
 	public void deleteChoiceById(String id);
 	
+	public List getChoiceByQuestionType(String type);
+	
 }

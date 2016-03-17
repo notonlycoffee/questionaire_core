@@ -31,4 +31,9 @@ public class ChoiceServiceImpl implements ChoiceService {
 		choiceMapper.deleteChoiceById(id);
 	}
 
+	@Override
+	public List<Choice> getChoiceByQuestionType(String type) {
+		return choiceMapper.getChoiceByQuestionType(type);
+	}
+
 }
