@@ -25,6 +25,7 @@
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="createeexam();return false;">创建试卷</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteexam();return false;">删除试卷</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="checkeexamdetail();return false;">查看详细试卷</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="addtabinside()">打开新窗口</a>
 	</div>
 	
 	<div id="exam_detail">
@@ -134,6 +135,14 @@
 					href:'${pageContext.request.contextPath}/exam/getDetailExamPage.xhtml?id='+row.id,
 				})
 			}
+		}
+		
+		function addtabinside() {
+			//text  attributes.url
+			//在tab窗口中点击,实现添加与目前tab同一级别的tab窗口
+			var node = {text:'one',attributes:{url:'one.xhtml'},url:'hh.xhtml'};
+			console.log(node);
+			self.parent.addTab(node);
 		}
 		
 	</script>

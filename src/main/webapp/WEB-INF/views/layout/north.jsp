@@ -13,10 +13,20 @@
 
 <div id="changepasswordinnorth"></div>
 
+<div id="password_window"></div>
 
 
 <script>
 	function changepassword() {
-		alert("亲,还不想做,啊哈哈哈");
+		$('#password_window').window({
+			width:400,
+			height:500,
+			modal:true,
+			title:'修改密码',
+			minimizable:false,
+			maximizable:false,
+			collapsible:false,
+			
+		})
 	}
 </script>
