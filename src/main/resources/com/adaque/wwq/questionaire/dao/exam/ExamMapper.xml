@@ -11,6 +11,7 @@
 		<result column="teacher_id" property="teacher_id"/>	
 		<result column="name" property="name"/>	
 		<result column="exam_id" property="exam_id"/>
+		<result column="status" property="status"/>
 		
 		<association property="exam" javaType="exam">
 			<id column="exam_id" property="id" />
@@ -77,5 +78,33 @@
 		AND c.id = a.teacher_id
 	</select>
 	
+	
+	<insert id="addExamPlan" parameterType="exam_plan">
+		INSERT INTO T_EXAM_PLAN (
+			ID,
+			TEACHER_ID,
+			EXAM_ID,
+			CLOSETIME,
+			PUBLISHTIME,
+			`STATUS`
+		)
+		VALUES
+			(#{id},
+			 #{teacher_id},
+			 #{exam_id},
+			 #{closetime},
+			 #{publishtime},
+			 #{status}
+			)
+			</insert>
+	
+	
+	<delete id="deleteExamPlanById" parameterType="string">
+		DELETE FROM T_EXAM_PLAN WHERE ID=#{value}
+	</delete>
+	
+	<update id="updateExamPlanStatus" parameterType="examPo">
+		UPDATE T_EXAM_PLAN T SET T.STATUS=#{status} WHERE T.ID=#{plan_id}
+	</update>
 	
 </mapper>

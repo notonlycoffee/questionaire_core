@@ -21,8 +21,17 @@ public class Exam_plan implements Serializable{
 	private String exam_id;
 	private String closetime_str;
 	private String publishtime_str;
+	private String status;  //试卷状态,开放或者下线
 	
 	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getClosetime_str() {
 		return closetime_str;
 	}

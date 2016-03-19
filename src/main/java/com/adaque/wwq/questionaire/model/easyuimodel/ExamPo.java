@@ -5,6 +5,21 @@ public class ExamPo {
 	private String exam_id;
 	private String choice_id;
 	private String question_id;
+	private String status;
+	private String plan_id;
+	
+	public String getPlan_id() {
+		return plan_id;
+	}
+	public void setPlan_id(String plan_id) {
+		this.plan_id = plan_id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getExam_id() {
 		return exam_id;
 	}

@@ -25,6 +25,7 @@
 	<div id="extToolbar" style="display:none;position:relative;" >
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="createplan();return false;">创建计划</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteplan();return false;">删除计划</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="changestatus();return false;">修改试卷状态</a>
 		
 	</div>
 	
@@ -35,6 +36,46 @@
 	<div id="add_window"></div>
 
 <script>
+	
+	function changestatus() {
+		var row = $('#dg').datagrid('getSelected');
+		if (!row) {
+			parent.showWarningBox('请先选择一个计划');
+			return;
+		} else{
+			$.ajax({
+				url:'${pageContext.request.contextPath}/exam/changeStatusExamPlan.xhtml',
+				type:'post',
+				data:{status:row.status,plan_id:row.id},
+				success:function(data) {
+					parent.showWarningBox(data.message);
+					$('#dg').datagrid('reload');
+				}
+			})
+		}
+	}
+	
+	function deleteplan() {
+		var row = $('#dg').datagrid('getSelected');
+		if (!row) {
+			parent.showWarningBox('请先选择一个计划');
+			return;
+		} else{
+			$.messager.confirm('删除计划', '是否删除计划?', function(r){
+				if (r){
+					$.ajax({
+						url:'${pageContext.request.contextPath}/exam/deleteExamPlan.xhtml',
+						type:'post',
+						data:{id:row.id},
+						success:function(data) {
+							parent.showWarningBox(data.message);
+							$('#dg').datagrid('reload');
+						}
+					})
+				}
+			});
+		}
+	}
 
 	function createplan() {
 		$('#add_window').window({
@@ -99,6 +140,18 @@
 				field : 'publishtime_str',
 				width : 100,
 				title : '试卷推出时间',
+			}, {
+				field : 'status',
+				width : 100,
+				title : '试卷状态',
+				formatter:function(value,row,index) {
+					if(row.status == "开放") {
+						return "<span style='background:#EF9A9A;padding:5px;'>"+row.status+"</span>";
+					} else {
+						return "<span style='padding:5px;'>"+row.status+"</span>";
+					}
+					
+				},
 			}] ]
 		})	
 	}

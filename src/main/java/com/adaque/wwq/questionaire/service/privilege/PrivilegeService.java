@@ -22,4 +22,8 @@ public interface PrivilegeService {
 	public int getRoleIdByPrivilegeId(int id);
 	
 	public int getMaxId();
+	
+	public void deletePrivilege(int id);
+	
+	public void deletePrivilegeResource(int id);
 }

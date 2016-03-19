@@ -26,4 +26,10 @@ public interface ExamMapper {
 	public void deleteChoice2Exam(String exam_id);
 	
 	public List<Exam_plan> getAllExamPlan();
+	
+	public void addExamPlan(Exam_plan examPlan);
+	
+	public void deleteExamPlanById(String id);
+	
+	public void updateExamPlanStatus(ExamPo po);
 }

@@ -55,5 +55,18 @@ public class ExamServiceImpl implements ExamService {
 	public List<Exam_plan> getAllExamPlan() {
 		return examMapper.getAllExamPlan();
 	}
+	@Override
+	public void addExamPlan(Exam_plan examPlan) {
+		examMapper.addExamPlan(examPlan);
+	}
+	@Override
+	public void deleteExamPlanById(String id) {
+		examMapper.deleteExamPlanById(id);
+	}
+	@Override
+	public void updateExamPlanStatus(ExamPo po) {
+		examMapper.updateExamPlanStatus(po);
+		
+	}
 
 }

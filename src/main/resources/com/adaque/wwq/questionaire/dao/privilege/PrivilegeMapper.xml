@@ -43,5 +43,15 @@
 		SELECT MAX(ID) FROM T_PRIVILEGE
 	</select>
 	
+	<delete id="deletePrivilege" parameterType="int">
+		DELETE FROM T_PRIVILEGE WHERE ID=#{value}
+	</delete>
+	
+	
+	<delete id="deletePrivilegeResource" parameterType="int">
+		DELETE FROM T_RESOURCE WHERE PRIVILEGE_ID=#{value}
+	</delete>
+	
+	
 	
 </mapper>

@@ -13,7 +13,7 @@
 		<table id="dg_plan"></table>
 	</div>
 	
-	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addexamplanbutton()">添加计划</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addexamplanbutton()" style="margin:20px 0 0 220px;">添加计划</a>
 	
 </div>
 
@@ -36,9 +36,11 @@ function addexamplanbutton() {
 	$.ajax({
 		url:'${pageContext.request.contextPath}/exam/addExamPlanLast.xhtml',
 		type:'post',
-		data:{'publishtime':publishtime,'closetime':closetime,'':},
+		data:{'publishtimetime':publishtime,'closetimetime':closetime,'id':row.id},
 		success:function(data) {
 			parent.showWarningBox(data.message);
+			$('#add_window').window('close');
+			$('#dg').datagrid('reload');
 		}
 	})
 	

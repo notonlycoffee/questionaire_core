@@ -24,4 +24,8 @@ public interface PrivilegeMapper {
 	
 	public int getMaxId();
 	
+	public void deletePrivilege(int id);
+	
+	public void deletePrivilegeResource(int id);
+	
 }

@@ -24,14 +24,7 @@ public class PrivilegePageController {
 	@RequestMapping("getAllPrivilegePage.xhtml")
 	public @ResponseBody List getAllPrivilegePage() {
 		List<Privilege> pri_list = privilegeService.getAllPrivilege();
-		List<MenuTreeModel> m_list = new ArrayList();
-		for(Privilege p : pri_list) {
-			MenuTreeModel m = new MenuTreeModel();
-			m.setId(p.getId());
-			m.setText(p.getName());
-			m_list.add(m);
-		}
-		return m_list;
+		return pri_list;
 	}
 	
 	@RequestMapping("addPrivilegePage.xhtml")
@@ -57,6 +50,17 @@ public class PrivilegePageController {
 		List<MenuTreeModel> re_list = privilegeService.getPrivilegeResourceById(Integer.valueOf(id));
 		
 		return re_list;
+	}
+	
+	@RequestMapping("deletePrivilege.xhtml")
+	public @ResponseBody ResultMessage deletePrivilege(String id) {
+		
+		ResultMessage message = new ResultMessage();
+		privilegeService.deletePrivilegeResource(Integer.valueOf(id));
+		System.out.println();
+		privilegeService.deletePrivilege(Integer.valueOf(id));
+		message.setMessage("删除成功");
+		return message;
 	}
 	
 	

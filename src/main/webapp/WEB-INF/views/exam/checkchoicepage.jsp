@@ -29,7 +29,6 @@
 	<script>
 	function deletequestion() {
 		var row = $('#dg').datagrid('getSelected');
-		console.log(row);
 		if (!row) {
 			parent.showWarningBox('请先选择一个题目');
 			return;

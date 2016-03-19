@@ -24,13 +24,12 @@
 	<div id="extToolbar" style="display:none;position:relative;" >
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="createeexam();return false;">创建试卷</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteexam();return false;">删除试卷</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="checkeexam();return false;">查看详细试卷</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="checkeexamdetail();return false;">查看详细试卷</a>
 	</div>
 	
 	<div id="exam_detail">
 	
 	</div>
-	
 	
 	
 	<script>
@@ -116,6 +115,27 @@
 				}] ]
 			})
 		})
+		
+		
+		function checkeexamdetail() {
+			var row = $('#dg').datagrid('getSelected');
+			if (!row) {
+				parent.showWarningBox('请先选择一个试卷条目');
+				return;
+			} else{
+				$('#exam_detail').window({
+					width:800,
+					height:500,
+					modal:true,
+					title:'查看试卷详细内容',
+					minimizable:false,
+					maximizable:false,
+					collapsible:false,
+					href:'${pageContext.request.contextPath}/exam/getDetailExamPage.xhtml?id='+row.id,
+				})
+			}
+		}
+		
 	</script>
 	
 	

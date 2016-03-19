@@ -56,6 +56,16 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 		return privilegeMapper.getMaxId();
 	}
 
+	@Override
+	public void deletePrivilege(int id) {
+		privilegeMapper.deletePrivilege(id);
+	}
+
+	@Override
+	public void deletePrivilegeResource(int id) {
+		privilegeMapper.deletePrivilegeResource(id);
+	}
+
 	
 
 	
