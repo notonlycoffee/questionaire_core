@@ -38,6 +38,14 @@
 	function addTab(node) {
 		var currentTab = $('#easyui_tabs');
 		if(currentTab.tabs('exists',node.text)) {
+			if(node.text == '查看学生答题') {
+				parent.showWarningBox('请先关闭现有的"查看学生答题"窗口');
+				return ;
+			}
+			if(node.text == "填写问卷") {
+				parent.showWarningBox('请先关闭现有的"填写问卷"');
+				return ;
+			}
 			currentTab.tabs('select',node.text);
 		} else {
 				var url = node.attributes.url;

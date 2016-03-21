@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adaque.wwq.questionaire.model.easyuimodel.ExamPo;
+import com.adaque.wwq.questionaire.model.easyuimodel.QuestionVo;
 import com.adaque.wwq.questionaire.po.Choice;
 import com.adaque.wwq.questionaire.po.Exam;
 import com.adaque.wwq.questionaire.po.Exam_plan;
@@ -227,6 +228,36 @@ public class ExamController {
 	public String getDetailExamPage(String id,ModelMap model) {
 		model.addAttribute("exam_id", id);
 		return "/exam/examdetail";
+	}
+	
+	@RequestMapping("getExamDetailChoice.xhtml")
+	public @ResponseBody List getExamDetailChoice(String id) {
+		List list = examService.getExamDetailChoice(id);
+		
+		System.out.println();
+		return list;
+	}
+	
+	
+	@RequestMapping("getExamDetailQuestion.xhtml")
+	public @ResponseBody List getExamDetailQuestion(String id) {
+		List<QuestionVo> list = examService.getExamDetailQuestion(id);
+		return list;
+				
+	}
+	
+	@RequestMapping("getAllExamPlanOpen.xhtml")
+	public @ResponseBody List getAllExamPlanOpen() {
+		List<Exam_plan> list = examService.getAllExamPlanOpen();
+		for(Exam_plan p : list) {
+			p.setExam_identity(p.getExam().getExam_identity());
+			p.setName(p.getExam().getName());
+			p.setTeacher_name(p.getTeacher().getName());
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd ");
+			p.setClosetime_str(df.format(p.getClosetime()));
+			p.setPublishtime_str(df.format(p.getPublishtime()));
+		}
+		return list;
 	}
 	
 }

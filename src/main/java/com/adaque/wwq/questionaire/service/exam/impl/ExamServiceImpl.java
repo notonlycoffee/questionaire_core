@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaque.wwq.questionaire.dao.exam.ExamMapper;
+import com.adaque.wwq.questionaire.model.easyuimodel.AnswerVo;
 import com.adaque.wwq.questionaire.model.easyuimodel.ExamPo;
+import com.adaque.wwq.questionaire.model.easyuimodel.QuestionVo;
+import com.adaque.wwq.questionaire.po.Choice;
 import com.adaque.wwq.questionaire.po.Exam;
 import com.adaque.wwq.questionaire.po.Exam_plan;
 import com.adaque.wwq.questionaire.po.Question;
@@ -67,6 +70,33 @@ public class ExamServiceImpl implements ExamService {
 	public void updateExamPlanStatus(ExamPo po) {
 		examMapper.updateExamPlanStatus(po);
 		
+	}
+	@Override
+	public List<Choice> getExamDetailChoice(String id) {
+		return examMapper.getExamDetailChoice(id);
+	}
+	@Override
+	public List<QuestionVo> getExamDetailQuestion(String id) {
+		return examMapper.getExamDetailQuestion(id);
+	}
+	
+	@Override
+	public List<AnswerVo> getAnswerStudents(String id) {
+		List list = examMapper.getAnswerStudents(id);
+		return list;
+	}
+	@Override
+	public List<AnswerVo> getStudentAnswer(AnswerVo vo) {
+		return examMapper.getStudentAnswer(vo);
+	}
+	@Override
+	public List<AnswerVo> getStudentAnswerQuestions(AnswerVo vo) {
+		return examMapper.getStudentAnswerQuestions(vo);
+	}
+	@Override
+	public List<Exam_plan> getAllExamPlanOpen() {
+		List<Exam_plan> list = examMapper.getAllExamPlanOpen();
+		return list;
 	}
 
 }

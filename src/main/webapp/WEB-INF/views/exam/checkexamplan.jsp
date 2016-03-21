@@ -63,15 +63,23 @@
 		} else{
 			$.messager.confirm('删除计划', '是否删除计划?', function(r){
 				if (r){
-					$.ajax({
-						url:'${pageContext.request.contextPath}/exam/deleteExamPlan.xhtml',
-						type:'post',
-						data:{id:row.id},
-						success:function(data) {
-							parent.showWarningBox(data.message);
-							$('#dg').datagrid('reload');
-						}
-					})
+					
+					if(row.status=="开放") {
+						parent.showWarningBox('试卷处于开放状态,无法删除');
+						return;
+					} else {
+						$.ajax({
+							url:'${pageContext.request.contextPath}/exam/deleteExamPlan.xhtml',
+							type:'post',
+							data:{id:row.id},
+							success:function(data) {
+								parent.showWarningBox(data.message);
+								$('#dg').datagrid('reload');
+							}
+						})
+					}
+					
+					
 				}
 			});
 		}
@@ -152,10 +160,23 @@
 					}
 					
 				},
-			}] ]
+			},{
+				field:'dddd',	
+				width:100,
+				title:'查看学生答题',
+				formatter:function(value,row,index) {
+					var id = row.exam_id;
+					return "<a style='color:#3385FF' href='javascript:void(0)' onclick=\"checkstudentexam('"+id+"');\">查看答题</a>"
+				}
+			}
+			] ]
 		})	
 	}
 	
+	function checkstudentexam(id) {
+		var node = {text:"查看学生答题",attributes:{url:"/answer/checkstudentexampage.xhtml?id="+id},url:"hh.xhtml"};
+		self.parent.addTab(node);
+	}
 	
 	
 </script>

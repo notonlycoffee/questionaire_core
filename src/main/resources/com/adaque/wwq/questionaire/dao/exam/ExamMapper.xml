@@ -107,4 +107,106 @@
 		UPDATE T_EXAM_PLAN T SET T.STATUS=#{status} WHERE T.ID=#{plan_id}
 	</update>
 	
+	<select id="getExamDetailChoice" parameterType="string" resultType="choice">
+		select * from t_choice t where id in (
+		select t.choice_id from t_exam_middle t where t.exam_id=#{value})
+	</select>
+	
+	<select id="getExamDetailQuestion" parameterType="string" resultType="questionVo">
+		select a.*,b.question_content from t_answer_question a,t_question_content b where a.id in (
+		select t.question_id from t_exam_question t where t.exam_id=#{value})
+		and a.id=b.question_id
+	</select>
+	
+	
+	<select id="getStudentAnswer" parameterType="answerVo" resultType="answerVo">
+		SELECT
+			c. NAME,
+			a.student_id,
+			a.exam_id,
+			b.question,
+			a.question_answer answer,
+			d.exam_identity,
+			d.name exam_name
+		FROM
+			t_answer a,
+			t_choice b,
+			t_student c,
+			t_exam d
+		WHERE
+			a.student_id = #{student_id}
+		AND a.exam_id = #{exam_id}
+		AND b.id = a.question_id
+		AND c.id = a.student_id
+		and a.exam_id=d.id
+	</select>
+	
+	
+	<select id="getAnswerStudents" parameterType="string" resultType="answerVo">
+		SELECT
+			b. NAME,
+			c.exam_identity,
+			c. NAME exam_name,
+			c.id exam_id,
+			b.id student_id
+		FROM
+			t_answer a,
+			t_student b,
+			t_exam c,
+			t_exam_plan d
+		WHERE
+			a.exam_id = c.id
+		AND a.exam_id = #{value}
+		AND b.id = a.student_id
+		GROUP BY
+			b.id
+	</select>
+	
+	
+	<select id="getStudentAnswerQuestions" parameterType="answerVo" resultType="answerVo">
+		SELECT
+			c.NAME,
+			a.student_id,
+			a.exam_id,
+			b.question_name,
+			a.question_answer answer,
+			d.exam_identity,
+			d.name exam_name,
+			e.question_content
+		FROM
+			t_answer a,
+			t_answer_question b,
+			t_student c,
+			t_exam d,
+			t_question_content e
+		WHERE
+			a.student_id = #{student_id}
+		AND a.exam_id = #{exam_id}
+		AND b.id = a.question_id
+		AND c.id = a.student_id
+		and a.exam_id=d.id AND
+		b.id=e.question_id
+	</select>
+	
+	
+	
+		<select id="getAllExamPlanOpen" resultMap="getAllExamPlanResultMap">
+		SELECT
+			a.*, 
+			b.NAME exam_name,
+			b.exam_identity,
+			c.id,
+			c.num,
+			c.NAME teacher_name
+		FROM
+			t_exam_plan a,
+			t_exam b,
+			t_teacher c
+		WHERE
+			a.exam_id = b.id
+		AND c.id = a.teacher_id
+		and status='开放'
+	</select>
+	
+	
 </mapper>
