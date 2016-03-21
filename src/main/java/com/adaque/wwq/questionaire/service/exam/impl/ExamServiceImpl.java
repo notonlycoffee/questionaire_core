@@ -98,5 +98,15 @@ public class ExamServiceImpl implements ExamService {
 		List<Exam_plan> list = examMapper.getAllExamPlanOpen();
 		return list;
 	}
+	@Override
+	public List<AnswerVo> getStudentFixAnswerChoice(String id) {
+		List<AnswerVo> voList = examMapper.getStudentFixAnswerChoice(id);
+		return voList;
+	}
+	@Override
+	public List<AnswerVo> getStudentFixAnswerContent(String id) {
+		List<AnswerVo> voList = examMapper.getStudentFixAnswerContent(id);
+		return voList;
+	}
 
 }

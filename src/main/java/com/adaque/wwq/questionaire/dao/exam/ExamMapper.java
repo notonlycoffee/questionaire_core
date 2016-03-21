@@ -47,4 +47,8 @@ public interface ExamMapper {
 	public List<AnswerVo> getStudentAnswerQuestions(AnswerVo vo);
 	
 	public List<Exam_plan> getAllExamPlanOpen();
+	
+	public List<AnswerVo> getStudentFixAnswerChoice(String id);
+	
+	public List<AnswerVo> getStudentFixAnswerContent(String id);
 }

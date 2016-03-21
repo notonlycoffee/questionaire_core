@@ -10,8 +10,44 @@ public class AnswerVo {
 	private String student_id;
 	private String question_name;
 	private String question_content;
+	private String choice_id;
+	private String select;
+	private String question_type;
+	private String question_id;
+	private String content_id;
 	
 	
+	
+	public String getQuestion_id() {
+		return question_id;
+	}
+	public void setQuestion_id(String question_id) {
+		this.question_id = question_id;
+	}
+	public String getContent_id() {
+		return content_id;
+	}
+	public void setContent_id(String content_id) {
+		this.content_id = content_id;
+	}
+	public String getSelect() {
+		return select;
+	}
+	public void setSelect(String select) {
+		this.select = select;
+	}
+	public String getQuestion_type() {
+		return question_type;
+	}
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
+	public String getChoice_id() {
+		return choice_id;
+	}
+	public void setChoice_id(String choice_id) {
+		this.choice_id = choice_id;
+	}
 	public String getQuestion_name() {
 		return question_name;
 	}

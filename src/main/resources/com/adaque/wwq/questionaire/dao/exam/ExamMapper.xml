@@ -208,5 +208,41 @@
 		and status='开放'
 	</select>
 	
+	<select id="getStudentFixAnswerChoice" parameterType="string" resultType="answerVo">
+		SELECT
+			a.id exam_id,
+			c.id choice_id,
+			c.question,
+			c.`SELECT`,
+			c.question_type
+		FROM
+			t_exam a,
+			t_exam_middle b,
+			t_choice c
+		WHERE
+			a.id = b.exam_id
+		AND b.choice_id = c.id
+		AND a.id = #{value}
+	</select>
+	
+	<select id="getStudentFixAnswerContent" parameterType="string" resultType="answerVo">
+		SELECT
+			a.id exam_id,
+			c.id question_id,
+			d.id content_id,
+			c.question_name,
+			d.question_content
+		FROM
+			t_exam a,
+			t_exam_question b,
+			t_answer_question c,
+			t_question_content d
+		WHERE
+			a.id = b.exam_id
+		AND c.id = b.question_id
+		AND d.question_id = c.id
+		AND a.id = #{value}
+	</select>
+	
 	
 </mapper>
