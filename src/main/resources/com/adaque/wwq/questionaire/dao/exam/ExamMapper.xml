@@ -208,7 +208,7 @@
 		and status='开放'
 	</select>
 	
-	<select id="getStudentFixAnswerChoice" parameterType="string" resultType="answerVo">
+	<select id="getStudentFixAnswerChoice" parameterType="examPo" resultType="answerVo">
 		SELECT
 			a.id exam_id,
 			c.id choice_id,
@@ -222,7 +222,8 @@
 		WHERE
 			a.id = b.exam_id
 		AND b.choice_id = c.id
-		AND a.id = #{value}
+		AND a.id = #{exam_id}
+		and c.question_type=#{question_type}
 	</select>
 	
 	<select id="getStudentFixAnswerContent" parameterType="string" resultType="answerVo">
@@ -245,4 +246,14 @@
 	</select>
 	
 	
+	<select id="getAllAnswerQuestion" resultType="string">
+		select question_name from t_answer_question
+	</select>
+	
+	
+	<insert id="addStudentAnswer" parameterType="answerVo">
+		INSERT INTO T_ANSWER(ID,STUDENT_ID,EXAM_ID,QUESTION_ID,QUESTION_ANSWER)
+		VALUES(#{id},#{student_id},#{exam_id},#{choice_id},#{answer})
+	</insert>
+ 	
 </mapper>

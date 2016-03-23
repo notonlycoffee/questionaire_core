@@ -1,6 +1,10 @@
 package com.adaque.wwq.questionaire.model.easyuimodel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AnswerVo {
+	private String id;
 	private String name;//学生姓名
 	private String exam_identity;
 	private String question;
@@ -15,9 +19,22 @@ public class AnswerVo {
 	private String question_type;
 	private String question_id;
 	private String content_id;
+	private List<String> selectList = new ArrayList<String>();
 	
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public List<String> getSelectList() {
+		return selectList;
+	}
+	public void setSelectList(List<String> selectList) {
+		this.selectList = selectList;
+	}
 	public String getQuestion_id() {
 		return question_id;
 	}

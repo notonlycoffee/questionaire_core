@@ -7,7 +7,15 @@ public class ExamPo {
 	private String question_id;
 	private String status;
 	private String plan_id;
+	private String question_type;
 	
+	
+	public String getQuestion_type() {
+		return question_type;
+	}
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
 	public String getPlan_id() {
 		return plan_id;
 	}

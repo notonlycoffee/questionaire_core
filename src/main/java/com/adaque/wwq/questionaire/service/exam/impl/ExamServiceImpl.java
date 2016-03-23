@@ -99,14 +99,22 @@ public class ExamServiceImpl implements ExamService {
 		return list;
 	}
 	@Override
-	public List<AnswerVo> getStudentFixAnswerChoice(String id) {
-		List<AnswerVo> voList = examMapper.getStudentFixAnswerChoice(id);
+	public List<AnswerVo> getStudentFixAnswerChoice(ExamPo po) {
+		List<AnswerVo> voList = examMapper.getStudentFixAnswerChoice(po);
 		return voList;
 	}
 	@Override
 	public List<AnswerVo> getStudentFixAnswerContent(String id) {
 		List<AnswerVo> voList = examMapper.getStudentFixAnswerContent(id);
 		return voList;
+	}
+	@Override
+	public List<String> getAllAnswerQuestion() {
+		return examMapper.getAllAnswerQuestion();
+	}
+	@Override
+	public void addStudentAnswer(AnswerVo vo) {
+		examMapper.addStudentAnswer(vo);
 	}
 
 }

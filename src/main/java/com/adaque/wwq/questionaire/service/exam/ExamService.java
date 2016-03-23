@@ -47,7 +47,11 @@ public interface ExamService {
 	
 	public List<Exam_plan> getAllExamPlanOpen();
 	
-	public List<AnswerVo> getStudentFixAnswerChoice(String id);
+	public List<AnswerVo> getStudentFixAnswerChoice(ExamPo po);
 	
 	public List<AnswerVo> getStudentFixAnswerContent(String id);
+	
+	public List<String> getAllAnswerQuestion();
+	
+	public void addStudentAnswer(AnswerVo vo);
 }
